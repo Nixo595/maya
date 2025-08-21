@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maya Boutique | Luxury Bridal & Ethnic Wear | Biratnagar, Nepal</title>
+  <meta name="description" content="Premier bridal boutique in Biratnagar offering custom couture, designer lehengas, and luxury ethnic wear since 2017. Nepali craftsmanship meets modern elegance.">
+  <meta name="keywords" content="Maya Boutique, Bridal Wear Nepal, Custom Lehengas, Wedding Sarees, Designer Sherwanis, Biratnagar Boutique, Nepali Ethnic Fashion">
+  <link rel="canonical" href="https://mayaboutique.com" />
+  <meta name="robots" content="index, follow">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #C8AD7F; /* Gold */
+      --primary-dark: #A68A5D;
+      --secondary: #7D4B4B; /* Maroon */
+      --dark: #1A1A1A;
+      --light: #FAF9F6;
+      --light-accent: #F0EDE5;
+      --maroon-bg: #7D4B4B; /* Main background */
+      --maroon-dark: #5a3636;
+      --maroon-darker: #422828;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--light);
+      background-color: var(--maroon-bg);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    
+    .header {
+      background-color: var(--maroon-bg);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .header.scrolled {
+      background: var(--maroon-dark);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links a {
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      color: var(--light);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    
+    .header.scrolled .nav-links a {
+      color: var(--light);
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .hero-section {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      color: white;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    
+    .hero-slide.active {
+      opacity: 1;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(125, 75, 75, 0.8), rgba(125, 75, 75, 0.9));
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      height: 400px;
+      transition: transform 0.4s ease;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(0);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .collection-card img {
+      transition: transform 0.8s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .collection-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .collection-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .collection-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .collection-card:hover .collection-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .testimonial-card {
+      background: var(--maroon-dark);
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    
+    .gallery-item {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border-radius: 16px;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .gallery-item img {
+      transition: transform 0.8s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .footer {
+      background: var(--maroon-dark) url('https://www.transparenttextures.com/patterns/black-paper.png');
+      color: #ccc;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .footer:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15));
+      z-index: 0;
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer a:hover {
+      color: var(--primary);
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      color: var(--light);
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+      color: var(--maroon-bg);
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--maroon-dark);
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px rgba(200, 173, 127, 0.2);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(200, 173, 127, 0.3);
+      color: var(--maroon-dark);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      transform: translateY(0);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--maroon-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .appointment-form input,
+    .appointment-form textarea,
+    .appointment-form select {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(200, 173, 127, 0.3);
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--light);
+    }
+    
+    .appointment-form input:focus,
+    .appointment-form textarea:focus,
+    .appointment-form select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(200, 173, 127, 0.2);
+      background-color: rgba(255, 255, 255, 0.08);
+      outline: none;
+    }
+    
+    .appointment-form input::placeholder,
+    .appointment-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .luxury-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c8ad7f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Dropdown menu */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--maroon-dark);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-content a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(200, 173, 127, 0.1);
+    }
+    
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--primary);
+      padding-left: 1.2rem;
+    }
+
+    .luxury-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+      margin: 30px auto;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: hidden;
+    }
+    
+    .modal-content {
+      display: block;
+      margin: 60px auto;
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .btn-container {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 5;
+    }
+    
+    /* Text color adjustments */
+    p, li, address, .text-gray-600 {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .text-gray-500 {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Card background adjustments */
+    .bg-white, .bg-light {
+      background-color: var(--maroon-dark);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .testimonial-card, .footer {
+      background-color: var(--maroon-darker);
+    }
+    
+    /* Modal navigation */
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-nav:hover {
+      background: rgba(200, 173, 127, 0.8);
+    }
+    
+    .prev-btn {
+      left: 20px;
+    }
+    
+    .next-btn {
+      right: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 75vh;
+        min-height: 500px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .collection-card {
+        height: 300px;
+      }
+      
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .dropdown-content {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+      
+      .mobile-dropdown.active .dropdown-content {
+        display: block;
+      }
+      
+      .modal-content {
+        max-width: 95%;
+        max-height: 70vh;
+      }
+      
+      .btn-container {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="luxury-pattern">
+
+   <!-- Header -->
+  <header class="header" id="mainHeader">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold flex items-center">
+        <div class="flex items-center space-x-4">
+          <img src="images/logo/logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+          
+          <div>
+            <span class="font-serif text-xl tracking-wider text-primary">MAYA</span>
+            <span class="block text-xs tracking-widest text-primary">BOUTIQUE</span>
+          </div>
+        </div>
+      </a>
+      
+      <div class="flex items-center">
+        <ul class="hidden md:flex space-x-6 uppercase text-sm tracking-wider nav-links">
+          <li><a href="#home">Maya</a></li>
+          <li class="dropdown">
+            <a href="#collections">Collections</a>
+            <div class="dropdown-content">
+              <a href="#bridal">Bridal</a>
+              <a href="#women">Women</a>
+              <a href="#men">Men</a>
+              <a href="#kids">Kids</a>
+              <a href="#Sarees">Sarees</a>
+            </div>
+          </li>
+   
+          <li><a href="#about">Our Journey</a></li>
+          <li><a href="measurement.html">Measurement</a></li>
+          <li><a href="#store">Our Store</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+         <div class="flex items-center space-x-4 ml-4">
+          <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-lg hover:text-primary transition-colors">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-lg hover:text-primary transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <div class="md:hidden hamburger-icon text-2xl cursor-pointer">
+            <i class="fa fa-bars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mobile-menu hidden md:hidden bg-maroon-dark py-4 px-6 shadow-lg">
+      <div class="flex flex-col space-y-3">
+        <a href="#home" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Home</a>
+        
+        <div class="mobile-dropdown">
+          <div class="flex justify-between items-center py-2 border-b border-primary border-opacity-20 cursor-pointer">
+            <span>Collections</span>
+            <i class="fas fa-chevron-down text-primary"></i>
+          </div>
+          <div class="dropdown-content">
+            <a href="#bridal" class="py-2 pl-4">Bridal</a>
+            <a href="#women" class="py-2 pl-4">Women</a>
+            <a href="#men" class="py-2 pl-4">Men</a>
+            <a href="#kids" class="py-2 pl-4">Kids</a>
+            <a href="#Sarees" class="py-2 pl-4">Sarees</a>
+          </div>
+        </div>
+        
+        <a href="#about" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Story</a>
+        <a href="measurement.html" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Measurement</a>
+        <a href="#store" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Store</a>
+        <a href="#contact" class="py-2 hover:text-primary transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+   <!-- Hero Section -->
+<section class="hero-section relative" id="home">
+  <!-- Slideshow -->
+  <div class="slides">
+    <div class="hero-slide active" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480671543_1131393188997512_7899745808690379307_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF_UxQYZuLXxzxo_0LopOTD88rpKd3YvNPzyukp3di803MvqMgMlhTSffNIMtq-Movi43vrzqI3H8WJ25wBwxCa&_nc_ohc=baqPco6Q324Q7kNvwFc-y_i&_nc_oc=Adm8v6juHxyAbTFsjBvQNzbQZPr0LfoV9kgezqu30JwD_pKFRlvMLsHZb32jtiLW3w4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=UTBMYr-cjO9b8MvmpyI1RQ&oh=00_AfRZT8cnqJcWjmRszJt9ORadwdv0OPNx3insI2g-at-mEQ&oe=688C0C48')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=bv0FxiElV5YQ7kNvwFYJXxS&_nc_oc=AdlwZG0ujgwcdEMtFPyEjPePf79f14GbRH4O7q2c45vcAjMgaBUpGXAKQrbyt_4JzOg&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=z5Ze5Pqji_V7NA8WiIp53w&oh=00_AfRE5H5H1D9qvNVS3cDZqLPcKeIFhOvsXpvV17wlA-JCkQ&oe=688C0CD2')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/481205842_1142547164548781_3470909088754454688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9aj8Z6eQYpv4vYGtuJZJNQKZjwASs7WtApmPABKztaxlmLMqLY6cYoegoFNiT4LVzSdOni0ZH4htBtxc7stt4&_nc_ohc=q-_kZgRrO6IQ7kNvwHDrUbE&_nc_oc=AdmlJRSpccRCT9vcg6ZqvvnRIxDjh32Mzxj0iogab3I8fbRhWt5Jf4hJI67HGdCIej4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=RB0LsmWxsz5Xhopr0wPT9g&oh=00_AfQYuH9yVmqUeB4o5UzwfnxK9LN_g2jEVtNs--Gcipc-Og&oe=688BFF66')"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10 min-h-screen flex items-end justify-end pb-16">
+    <div class="text-right max-w-xl text-white fade-in mr-8 mb-12 relative z-20 p-6 rounded-xl backdrop-blur-sm transform -translate-y-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">Crafting with Maya</h1>
+      <p class="text-lg md:text-xl text-primary">
+        Luxury bridal and ethnic wear in Biratnagar, Nepal
+      </p>
+    </div>
+
+    <div class="btn-container fade-in mb-6 mr-4">
+      <div class="flex flex-col sm:flex-row gap-4 justify-end">
+        <a href="#collections" class="btn-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-opacity-90 transition transform hover:scale-105">
+          Explore Collections
+        </a>
+        <a href="#store" class="btn-outline border-primary text-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105">
+          Visit Our Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Collections -->
+    <section class="py-16" id="collections">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="section-title text-4xl">Signature Collections</h2>
+          <p class="max-w-2xl mx-auto mt-4">Discover our curated range of luxury ensembles for every special occasion</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Bridal Collection -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="bridal">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/483100257_1150075693795928_347352959836987856_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeElEIO_f7VrXpZ6kc3pxC8dBmwZOSI-ac0GbBk5Ij5pzZeN9-p4RkvpkG_pyBcycACE0QxbZTCLrhe1dmPHtYyZ&_nc_ohc=7SLeBC6VaikQ7kNvwFRIFs8&_nc_oc=AdlUKLr-58RwHT-dDty0kcvRPNsv-ydGbAqodyEi-d9kWJyr_IwcpZ-izWsnbfWpd9U&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=GWTFh3ZDizOUZsk5B5g_IQ&oh=00_AfSj0jha1gJRdfClQSfmYcr2uXFUhryO7HzfxrnGjZ7icg&oe=688C092B" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Bridal Couture</h3>
+              <p class="mb-4">Exquisite lehengas and sarees for your special day</p>
+              <a href="bridal.html" class="text-primary font-semibold hover:underline">Explore Collection</a>
+            </div>
+          </div>
+
+        <!-- Women's Collection -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="women">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/483568860_1149083917228439_6120114613266213039_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE-lDrmz24ZzlzYeI_RD4EAn9Vhho7Y4CKf1WGGjtjgIqhJzh8NGMkQdkWsA5gMN0mOyRldaGL09fCKgquU6Lha&_nc_ohc=iZcQlsYiacsQ7kNvwGZMTDN&_nc_oc=AdmsOzmlCfl9IhfjI5_d6eTcdlYyseCtJX6XtxkLGBVoLdl9_T10TaLR8cLlvlCa_Zs&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=gYoXU2bR642vFI_i9-ayxw&oh=00_AfSSFHIZ9fMLNS3RyLYQFHeT0fR1gP_4_G6XDU9f3QmA7Q&oe=688BFD3E" alt="Maya Boutique Women's Collection - Elegant ethnic wear" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Women's Ensemble</h3>
+              <p class="mb-4">Elegant ethnic wear for weddings and celebrations</p>
+              <a href="#" class="text-primary font-semibold hover:underline">Explore Collection</a>
+            </div>
+          </div> 
+
+          <!-- Men's Collection -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="men">
+            <img src="https://instagram.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTc5OS5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fktm1-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QFF9zNCI9224lZPb6zTvitU9i65TrP34VQLilR6IovAkUPj4i2A3XqfdnFwfirIGww&_nc_ohc=XBRMgVgPIgQQ7kNvwEWf3ME&_nc_gid=kX0jUCMB76tXpjWoeS5YEA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzM3MTQ2OTM5OTA0Njk1OTI2MA%3D%3D.3-ccb7-5&oh=00_AfQGfgLwrjWII5bkkvR4cn0L7wxfZYZxebyx-v3x1auUPQ&oe=688D36E6&_nc_sid=22de04" alt="Maya Boutique Men's Collection - Sherwanis and traditional outfits" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Men's Attire</h3>
+              <p class="mb-4">Regal sherwanis and traditional outfits</p>
+              <a href="#" class="text-primary font-semibold hover:underline">Explore Collection</a>
+            </div>
+          </div>
+        </div> 
+
+        <!-- Kids Collection -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="kids">
+            <img src="https://imgur.com/a/Cv5sqMq" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Kids Collection</h3>
+              <p class="mb-4">Adorable traditional outfits for children</p>
+              <a href="#" class="text-primary font-semibold hover:underline">Explore Collection</a>
+            </div>
+          </div>
+          
+          <!-- Sarees Collection -->
+            <div class="collection-card rounded-xl overflow-hidden fade-in" id="Sarees">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469596767_18351232807192874_4837806760751263513_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEPGLgCJjVrDj52NOEyXsHU8ZfNVPJF1AXxl81U8kXUBd1RtKDtVX7wHiHXG27Du8JmhyNlMVhxJcXP21RKbkMj&_nc_ohc=8DQF7lgOL50Q7kNvwGsvNfA&_nc_oc=AdlzL-lrZ8enU4GrszrK82ilVoGqbGswIqkGgdVGTiADAHubivKBtp3X68tVmGg19Y8&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=4rAXDtAtenk5XWoqQkddIg&oh=00_AfRsFu4A_FBvXnz0pV7Aykhpa41nFpSmky49hBPwfrx2RA&oe=688C116D" alt="Maya Boutique saree" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Sarees</h3>
+              <p class="mb-4">Complement your look with our exclusive Saree</p>
+              <a href="#" class="text-primary font-semibold hover:underline">Explore Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="section-title text-4xl">Moments of Elegance</h2>
+          <p class="max-w-2xl mx-auto mt-4">Capturing the beauty and joy our creations bring to special occasions</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/481205842_1142547164548781_3470909088754454688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9aj8Z6eQYpv4vYGtuJZJNQKZjwASs7WtApmPABKztaxlmLMqLY6cYoegoFNiT4LVzSdOni0ZH4htBtxc7stt4&_nc_ohc=q-_kZgRrO6IQ7kNvwHDrUbE&_nc_oc=AdmlJRSpccRCT9vcg6ZqvvnRIxDjh32Mzxj0iogab3I8fbRhWt5Jf4hJI67HGdCIej4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=RB0LsmWxsz5Xhopr0wPT9g&oh=00_AfQYuH9yVmqUeB4o5UzwfnxK9LN_g2jEVtNs--Gcipc-Og&oe=688BFF66">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/481205842_1142547164548781_3470909088754454688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9aj8Z6eQYpv4vYGtuJZJNQKZjwASs7WtApmPABKztaxlmLMqLY6cYoegoFNiT4LVzSdOni0ZH4htBtxc7stt4&_nc_ohc=q-_kZgRrO6IQ7kNvwHDrUbE&_nc_oc=AdmlJRSpccRCT9vcg6ZqvvnRIxDjh32Mzxj0iogab3I8fbRhWt5Jf4hJI67HGdCIej4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=RB0LsmWxsz5Xhopr0wPT9g&oh=00_AfQYuH9yVmqUeB4o5UzwfnxK9LN_g2jEVtNs--Gcipc-Og&oe=688BFF66" alt="Bride in Maya Boutique lehenga - Wedding ceremony">
+            <div class="gallery-overlay">
+              <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
+            </div>
+          </div>
+          
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=bv0FxiElV5YQ7kNvwFYJXxS&_nc_oc=AdlwZG0ujgwcdEMtFPyEjPePf79f14GbRH4O7q2c45vcAjMgaBUpGXAKQrbyt_4JzOg&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=z5Ze5Pqji_V7NA8WiIp53w&oh=00_AfRE5H5H1D9qvNVS3cDZqLPcKeIFhOvsXpvV17wlA-JCkQ&oe=688C0CD2">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=bv0FxiElV5YQ7kNvwFYJXxS&_nc_oc=AdlwZG0ujgwcdEMtFPyEjPePf79f14GbRH4O7q2c45vcAjMgaBUpGXAKQrbyt_4JzOg&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=z5Ze5Pqji_V7NA8WiIp53w&oh=00_AfRE5H5H1D9qvNVS3cDZqLPcKeIFhOvsXpvV17wlA-JCkQ&oe=688C0CD2" alt="Couple in traditional Nepali wedding attire">
+            <div class="gallery-overlay">
+              <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
+            </div>
+          </div>
+          
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/472019499_18354883621192874_2976118541682528536_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHtGpRGhACLlAunxRPr2-4996uCX-PYp-v3q4Jf49in63M6yFIgWoDxBujTmzgrP6TWlSmmJ1eE7Tt9u1un7-hB&_nc_ohc=knnyvMw850cQ7kNvwGmSYTO&_nc_oc=Admzi0fZnL-4IHZ8oFz-puc_xxJarRgowvF5mw6g1YIVTZHzPGZ3Fp6jSu3479wl87ncF0mRYBmSuWVN1q30c4N2&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=ZsYWvaBcprBOazTlcKxf0A&oh=00_AfTHwO4TTRR4nMPzpbrjGtFB-Bb_upSQXkrOotljoaCTXQ&oe=68899D7A">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469167156_18350612098192874_3896431603254022339_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzodimUb3aZhGYBRu16fHLOUBpblZe8nU5QGluVl7ydfEsF5cbPsgzG2R8OxQfVO3eBzYBwFmZhuZHkPZce74z&_nc_ohc=BLgNuoUjOkEQ7kNvwEP8E8m&_nc_oc=AdmW6pQmPFaIWpks1vaFfbwxWwY9S9_xEZLOHhDk9d_O4apvgadKr0jKbwuVDsyPOBI&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=FacC1T781hz7mbgkKBFI5Q&oh=00_AfRLCm--YSLHblDwU7npEAiBTng0iSTwu8EYjLepLLJ64w&oe=688C1E9A" alt="Bride's intricate jewelry and mehendi details">
+            <div class="gallery-overlay">
+              <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
+            </div>
+          </div>
+          
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.82787-15/522648261_18378489418192874_7960173927349057094_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGBfJkAlh7N7h82oDPuYJp4c_Exc-iyQm1z8TFz6LJCbVtpiHU-csMsMYBBvYxMUSQN-WzJB6iRPQU1Hje3UDu1&_nc_ohc=CmlJD21DEEYQ7kNvwG3uhta&_nc_oc=AdnxPLoTUOmbO_9bwn2gFny3I0AsHE9ozUCo15Hhi3mBm-F_W-UpHB7Mev6Fd6K1uTerIXDSsZ6zOWd8z_E1Kamq&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=V7Tp4KMpft1pVv4Z53qmSQ&oh=00_AfRI3ISu88ZW-6VB9ZvqY7MgejTkJPLQiDTzGbWnzZDd1Q&oe=688991C3">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.6435-9/107959501_880200539054838_7448110445846481246_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEntawfxqqYs47PKyJk3kcCJS5gHpZQa7AlLmAellBrsODU0XpIzQBX1k35OsCTybwEyN8scM91RUTHos_VZ8V_&_nc_ohc=ZxzjFh-XFm0Q7kNvwGuBdTV&_nc_oc=AdkmG00KQC_IwLTjNrj6ynoTganw72gEq7POmEmhjGyi9aPIXwV8m_uMHMUe-lErNUs&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=KGOjYQ1w3eVAo4eH8LAX-w&oh=00_AfTYZ4vEsEvgr-5wend4v7CmGfbHjb8_7PxuuLqO34OcAQ&oe=68ADA6C6" alt="Groom in traditional Nepali sherwani">
+            <div class="gallery-overlay">
+              <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-8 fade-in">
+          <a href="#" class="inline-block bg-primary hover:bg-primary-dark text-maroon-dark py-3 px-8 rounded-full uppercase font-semibold tracking-wider transition-colors duration-300 transform hover:scale-105">View Full Gallery</a>
+        </div>
+      </div>
+    </section> 
+
+    <!-- Our Journey -->  
+     <section class="py-16" id="about">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2 fade-in">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-xl overflow-hidden shadow-lg transform transition hover:scale-105">
+                <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Maya Boutique Craftsmanship - Artisans at work" class="w-full h-64 object-cover">
+              </div>
+              <div class="rounded-xl overflow-hidden shadow-lg mt-12 transform transition hover:scale-105">
+                <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/518283794_25046981428224981_2258178114045744617_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHz4t4zpyzdEcwPLuG9SLVYSWpQNEJ7XbFJalA0QntdsUuTNnuQE8bjO68DVSWtU0gM_ORz93R5wZrvootsVd1Y&_nc_ohc=HWAi3CD7EIAQ7kNvwG8QDD4&_nc_oc=Adkoxmfrnob4xTZS6gtf3YrldtvJh-HInPe0P_5NDZZ3aNF-QBeRIm98J6hmVish8lw&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=sISm2ODJa7kyqoRL-4X7VQ&oh=00_AfRXz7nJ-1C12wMZAH4d4MThruLW-K_AGW4nHiFkNtqnMg&oe=688C23EE" class="w-full h-64 object-cover">
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 fade-in">
+            <h2 class="section-title text-4xl mb-6">Our Journey</h2>
+            <p class="mb-4">
+              Started in Biratnagar with a vision close to my heart, Maya Boutique grew from a small studio into a space where tradition meets artistry. With an artist's eye and a deep love for tradition, I've always wanted to create pieces that reflect our heritage through delicate handwork, rich textures, and the timeless charm of traditional Nepali fabrics.
+            </p>
+            <p class="mb-6">
+              Each design reflects a story of culture, emotion, and elegance. I've poured my passion into every piece, believing that every stitch carries meaning and every embroidery preserves the beauty of our roots. Our creations have adorned local brides and graced fashion showcases, each one shaped by devotion, creativity, and cultural pride. Today, Maya Boutique stands not just as a brand, but as a deeply personal journey stitched with love, where culture and couture beautifully intertwine.
+            </p>
+            <div class="flex items-center space-x-4 bg-maroon-dark p-4 rounded-xl shadow-sm">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.6435-9/38433257_1925123570879707_6879474655325847552_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=94e2a3&_nc_eui2=AeF85RUdOXD3Q2nzeQFUfjL-p2z4VoO_x5inbPhWg7_HmAF3Bn75FDGWXEmkZGWpVxhp_FHLGDJLhYJpmcLxNMv8&_nc_ohc=PDo1VOtsV3QQ7kNvwFUI9L6&_nc_oc=AdkdRfeY_QIIqeXlwxhqwGVb37u3sGuk6pHp40K9NECFM5MR4iMAs7P3u_22yK2o4gQv9mJ5FJUZkhmtxrpvZm3_&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=MyjCsnlF4yrCbmNb12VZ1g&oh=00_AfRJh-9c-5u9glqMDXhmy0cu4HbEy1TLRi4U3XdWEmLPFQ&oe=68ABBBBE" alt="Knor Shrestha - Founder of Maya Boutique" class="w-16 h-16 rounded-full object-cover shadow-md border-2 border-primary">
+              <div>
+                <h4 class="font-bold text-primary">Knor Shrestha</h4>
+                <p class="text-sm text-gray-500">Founder & Creative Designer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Store -->
+    <section class="py-16" id="store">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2 fade-in">
+            <h2 class="section-title text-4xl mb-6">Our Atelier</h2>
+            <p class="mb-4">
+              Visit our boutique in the heart of Biratnagar, where our designers will guide you through creating your perfect outfit. We specialize in custom bridal wear for Nepali weddings, with attention to every detail from initial sketch to final fitting.
+            </p>
+            
+            <div class="bg-maroon-dark p-8 rounded-xl shadow-lg mt-8 transform transition hover:scale-[1.01]">
+              <h3 class="text-xl font-bold mb-4 text-primary">Schedule Your Visit</h3>
+              
+              <div class="mb-6">
+                <h4 class="font-bold text-lg mb-2">Studio Hours</h4>
+                <p>Sunday - Friday: 10:00 AM - 6:00 PM</p>
+                <p>Saturday: By appointment only</p>
+              </div>
+              
+              <div class="mb-6">
+                <h4 class="font-bold text-lg mb-2">Bridal Consultations</h4>
+                <p>We recommend scheduling appointments for bridal consultations to ensure personalized attention.</p>
+              </div>
+              
+              <a href="#contact" class="btn-primary inline-block py-3 px-8 rounded-full uppercase font-semibold tracking-wider transform hover:scale-105">Book Appointment</a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 fade-in">
+            <div class="rounded-xl overflow-hidden shadow-xl transform transition hover:scale-[1.01]">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3562.863150711658!2d87.2802106!3d26.4535106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef75642318ba2b%3A0x8f6a6d5c120d0f!2sMAYA%20BOUTIQUE!5e0!3m2!1sen!2snp!4v1713460000000!5m2!1sen!2snp" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                title="Maya Boutique Location - Jahada Road, Biratnagar">
+              </iframe>
+            </div>
+            
+            <div class="mt-6 bg-maroon-dark p-6 rounded-xl shadow-md transform transition hover:scale-[1.01]">
+              <h4 class="font-bold text-lg mb-3 text-primary">Location</h4>
+              <p class="mb-2">Jahada Road, Opposite of City Palace</p>
+              <p class="mb-2">Biratnagar 56613, Nepal</p>
+              <p class="mb-2">+977-9804377178</p>
+              <p>mayaboutique2017@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-16" id="contact">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="section-title text-4xl">Begin Your Journey</h2>
+          <p class="max-w-2xl mx-auto mt-4">Reach out to schedule a consultation or inquire about our services</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="bg-maroon-dark rounded-xl shadow-lg p-8 max-w-4xl mx-auto fade-in transform transition hover:scale-[1.005]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold mb-6 text-primary">Contact Information</h3>
+              
+              <div class="flex items-start mb-6">
+                <div class="text-primary text-xl mr-4 mt-1">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Our Atelier</h4>
+                  <p>Jahada Road, Opposite of City Palace<br>
+                  Biratnagar 56613, Nepal</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start mb-6">
+                <div class="text-primary text-xl mr-4 mt-1">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Phone</h4>
+                  <p>+977-9804377178</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start mb-6">
+                <div class="text-primary text-xl mr-4 mt-1">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Email</h4>
+                  <p>mayaboutique2017@gmail.com</p>
+                </div>
+              </div>
+              
+              <div class="mt-8">
+                <h4 class="font-bold mb-4 text-primary">Follow Our Journey</h4>
+                <div class="flex space-x-4">
+                  <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link transform hover:scale-110">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link transform hover:scale-110">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link transform hover:scale-110">
+                    <i class="fab fa-tiktok"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-2xl font-bold mb-6 text-primary">Send a Message</h3>
+              <form class="appointment-form">
+                <div class="mb-4">
+                  <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <select class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                    <option value="" disabled selected>Service Interested In</option>
+                    <option>Bridal Consultation</option>
+                    <option>Custom Design</option>
+                    <option>Ready-to-Wear</option>
+                    <option>Other Inquiry</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3 px-8 rounded-full uppercase font-semibold tracking-wider transform hover:scale-105">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <div class="modal-nav prev-btn">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <img class="modal-content" id="modalImage">
+      <div class="modal-nav next-btn">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-12">
+    <div class="footer-content container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div>
+          <div class="text-2xl font-bold mb-4 flex items-center">
+            <img src="images/logo/logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+           
+            <span class="tracking-wider text-primary">MAYA BOUTIQUE</span>
+          </div>
+          <p class="mb-6">
+            Luxury bridal and ethnic wear crafted with passion in Biratnagar, Nepal since 2017.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link transform hover:scale-110">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link transform hover:scale-110">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link transform hover:scale-110">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Collections</h3>
+          <ul class="space-y-3">
+            <li><a href="#bridal" class="hover:text-primary transition-colors">Bridal Lehengas</a></li>
+            <li><a href="#women" class="hover:text-primary transition-colors">Designer Sarees</a></li>
+            <li><a href="#men" class="hover:text-primary transition-colors">Men's Sherwanis</a></li>
+            <li><a href="#kids" class="hover:text-primary transition-colors">Kids Collection</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Festival Wear</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Information</h3>
+          <ul class="space-y-3">
+            <li><a href="#about" class="hover:text-primary transition-colors">Our Story</a></li>
+            <li><a href="#measurement" class="hover:text-primary transition-colors">Measurement Guide</a></li>
+            <li><a href="#store" class="hover:text-primary transition-colors">Store Location</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Care Instructions</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Press Features</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Contact</h3>
+          <address class="not-italic">
+            <p class="mb-2">Jahada Road, Opposite of City Palace</p>
+            <p class="mb-2">Biratnagar 56613, Nepal</p>
+            <p class="mb-2">+977-9804377178</p>
+            <p class="mb-4">mayaboutique2017@gmail.com</p>
+            <p>Sunday-Friday: 10AM - 6PM</p>
+            <p>Saturday: By appointment</p>
+          </address>
+        </div>
+      </div>
+      
+      <div class="border-t border-primary border-opacity-20 mt-8 pt-8 text-center text-gray-500">
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-primary transition-colors">Shipping & Returns</a>
+          <a href="#" class="hover:text-primary transition-colors">FAQ</a>
+        </div>
+        <p>© 2017-2024 Maya Boutique. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky header functionality
+    const header = document.getElementById('mainHeader');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Mobile menu toggle
+    document.querySelector('.hamburger-icon').addEventListener('click', function() {
+      document.querySelector('.mobile-menu').classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelector('.mobile-menu').classList.add('hidden');
+      });
+    });
+    
+    // Mobile dropdown toggle
+    document.querySelector('.mobile-dropdown').addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    // Initialize elements as inactive
+    fadeElements.forEach(element => {
+      element.classList.remove('active');
+    });
+    
+    // Run on load and scroll
+    window.addEventListener('load', fadeInOnScroll);
+    window.addEventListener('scroll', fadeInOnScroll);
+    
+    // Form submission
+    const form = document.querySelector('.appointment-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Thank you for your message! We will contact you soon.');
+        form.reset();
+      });
+    }
+    
+    // Hero slideshow functionality
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[n].classList.add('active');
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    // Start slideshow
+    showSlide(0);
+    setInterval(nextSlide, 5000);
+    
+    // Image Modal functionality
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.querySelector(".close");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    
+    // Get all gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    let currentImageIndex = 0;
+    let images = [];
+    
+    // Collect all image URLs
+    galleryItems.forEach(item => {
+      images.push(item.getAttribute('data-src'));
+    });
+    
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', function() {
+        modal.style.display = "block";
+        modalImg.src = this.getAttribute('data-src');
+        currentImageIndex = index;
+      });
+    });
+    
+    // Close modal when clicking on X
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = "none";
+    });
+    
+    // Close modal when clicking outside the image
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        modal.style.display = "none";
+      }
+    });
+    
+    // Next image in modal
+    nextBtn.addEventListener('click', function() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      modalImg.src = images[currentImageIndex];
+    });
+    
+    // Previous image in modal
+    prevBtn.addEventListener('click', function() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      modalImg.src = images[currentImageIndex];
+    });
+    
+    // Keyboard navigation in modal
+    document.addEventListener('keydown', function(e) {
+      if (modal.style.display === "block") {
+        if (e.key === "ArrowRight") {
+          nextBtn.click();
+        } else if (e.key === "ArrowLeft") {
+          prevBtn.click();
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
