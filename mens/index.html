@@ -1,1 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Collection | Maya Boutique | Traditional & Formal Wear | Biratnagar, Nepal</title>
+  <meta name="description" content="Exquisite men's collection at Maya Boutique featuring sherwanis, suits, and traditional Nepali wear. Crafted with precision in Biratnagar, Nepal.">
+  <meta name="keywords" content="Maya Boutique Men, Sherwani Nepal, Men's Traditional Wear, Formal Wear Biratnagar, Nepali Men's Fashion">
+  <meta name="robots" content="index, follow">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #C8AD7F; /* Gold */
+      --primary-dark: #A68A5D;
+      --secondary: #7D4B4B; /* Maroon */
+      --dark: #1A1A1A;
+      --light: #FAF9F6;
+      --light-accent: #F0EDE5;
+      --maroon-bg: #7D4B4B; /* Main background */
+      --maroon-dark: #5a3636;
+      --maroon-darker: #422828;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--light);
+      background-color: var(--maroon-bg);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    
+    .header {
+      background-color: var(--maroon-bg);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .header.scrolled {
+      background: var(--maroon-dark);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links a {
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      color: var(--light);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    
+    .header.scrolled .nav-links a {
+      color: var(--light);
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .hero-section {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      color: white;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    
+    .hero-slide.active {
+      opacity: 1;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(125, 75, 75, 0.8), rgba(125, 75, 75, 0.9));
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      height: 400px;
+      transition: transform 0.4s ease;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(0);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .collection-card img {
+      transition: transform 0.8s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .collection-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .collection-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .collection-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .collection-card:hover .collection-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .testimonial-card {
+      background: var(--maroon-dark);
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    
+    .gallery-item {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border-radius: 16px;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .gallery-item img {
+      transition: transform 0.8s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .footer {
+      background: var(--maroon-dark) url('https://www.transparenttextures.com/patterns/black-paper.png');
+      color: #ccc;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .footer:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15));
+      z-index: 0;
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer a:hover {
+      color: var(--primary);
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      color: var(--light);
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+      color: var(--maroon-bg);
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--maroon-dark);
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px rgba(200, 173, 127, 0.2);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(200, 173, 127, 0.3);
+      color: var(--maroon-dark);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      transform: translateY(0);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--maroon-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .appointment-form input,
+    .appointment-form textarea,
+    .appointment-form select {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(200, 173, 127, 0.3);
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--light);
+    }
+    
+    .appointment-form input:focus,
+    .appointment-form textarea:focus,
+    .appointment-form select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(200, 173, 127, 0.2);
+      background-color: rgba(255, 255, 255, 0.08);
+      outline: none;
+    }
+    
+    .appointment-form input::placeholder,
+    .appointment-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
+    .luxury-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c8ad7f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Dropdown menu */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--maroon-dark);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-content a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(200, 173, 127, 0.1);
+    }
+    
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--primary);
+      padding-left: 1.2rem;
+    }
+
+    .luxury-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary), transparent);
+      margin: 30px auto;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: hidden;
+    }
+    
+    .modal-content {
+      display: block;
+      margin: 60px auto;
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .btn-container {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 5;
+    }
+    
+    /* Text color adjustments */
+    p, li, address, .text-gray-600 {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .text-gray-500 {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Card background adjustments */
+    .bg-white, .bg-light {
+      background-color: var(--maroon-dark);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .testimonial-card, .footer {
+      background-color: var(--maroon-darker);
+    }
+    
+    /* Modal navigation */
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-nav:hover {
+      background: rgba(200, 173, 127, 0.8);
+    }
+    
+    .prev-btn {
+      left: 20px;
+    }
+    
+    .next-btn {
+      right: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 75vh;
+        min-height: 500px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .collection-card {
+        height: 300px;
+      }
+      
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .dropdown-content {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+      
+      .mobile-dropdown.active .dropdown-content {
+        display: block;
+      }
+      
+      .modal-content {
+        max-width: 95%;
+        max-height: 70vh;
+      }
+      
+      .btn-container {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="luxury-pattern">
+
+   <!-- Header -->
+  <header class="header" id="mainHeader">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold flex items-center">
+        <div class="flex items-center space-x-4">
+          <img src="logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+          
+          <div>
+            <span class="font-serif text-xl tracking-wider text-primary">MAYA</span>
+            <span class="block text-xs tracking-widest text-primary">BOUTIQUE</span>
+          </div>
+        </div>
+      </a>
+      
+      <div class="flex items-center">
+        <ul class="hidden md:flex space-x-6 uppercase text-sm tracking-wider nav-links">
+          <li><a href="index.html">Maya</a></li>
+          <li class="dropdown">
+            <a href="#collections">Collections</a>
+            <div class="dropdown-content">
+              <a href="bridal.html">Bridal</a>
+              <a href="#men">Men</a>
+              <a href="#women">Women</a>
+              <a href="#kids">Kids</a>
+              <a href="#Sarees">Sarees</a>
+            </div>
+          </li>
+   
+          <li><a href="index.html#about">Our Journey</a></li>
+          <li><a href="measurement.html">Measurement</a></li>
+          <li><a href="index.html#store">Our Store</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        
+         <div class="flex items-center space-x-4 ml-4">
+          <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-lg hover:text-primary transition-colors">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-lg hover:text-primary transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <div class="md:hidden hamburger-icon text-2xl cursor-pointer">
+            <i class="fa fa-bars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mobile-menu hidden md:hidden bg-maroon-dark py-4 px-6 shadow-lg">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Home</a>
+        
+        <div class="mobile-dropdown">
+          <div class="flex justify-between items-center py-2 border-b border-primary border-opacity-20 cursor-pointer">
+            <span>Collections</span>
+            <i class="fas fa-chevron-down text-primary"></i>
+          </div>
+          <div class="dropdown-content">
+            <a href="bridal.html" class="py-2 pl-4">Bridal</a>
+            <a href="#men" class="py-2 pl-4">Men</a>
+            <a href="#women" class="py-2 pl-4">Women</a>
+            <a href="#kids" class="py-2 pl-4">Kids</a>
+            <a href="#Sarees" class="py-2 pl-4">Sarees</a>
+          </div>
+        </div>
+        
+        <a href="index.html#about" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Story</a>
+        <a href="measurement.html" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Measurement</a>
+        <a href="index.html#store" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Store</a>
+        <a href="index.html#contact" class="py-2 hover:text-primary transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+   <!-- Hero Section -->
+<section class="hero-section relative" id="home">
+  <!-- Slideshow -->
+  <div class="slides">
+    <div class="hero-slide active" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTc5OS5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fktm1-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QFF9zNCI9224lZPb6zTvitU9i65TrP34VQLilR6IovAkUPj4i2A3XqfdnFwfirIGww&_nc_ohc=XBRMgVgPIgQQ7kNvwEWf3ME&_nc_gid=kX0jUCMB76tXpjWoeS5YEA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzM3MTQ2OTM5OTA0Njk1OTI2MA%3D%3D.3-ccb7-5&oh=00_AfQGfgLwrjWII5bkkvR4cn0L7wxfZYZxebyx-v3x1auUPQ&oe=688D36E6&_nc_sid=22de04')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0.aW1hZ2VfdXJsZ2VuLjE0NDB4MTc5OS5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fktm1-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QFF9zNCI9224lZPb6zTvitU9i65TrP34VQLilR6IovAkUPj4i2A3XqfdnFwfirIGww&_nc_ohc=XBRMgVgPIgQQ7kNvwEWf3ME&_nc_gid=kX0jUCMB76tXpjWoeS5YEA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzM3MTQ2OTM5OTA0Njk1OTI2MA%3D%3D.3-ccb7-5&oh=00_AfQGfgLwrjWII5bkkvR4cn0L7wxfZYZxebyx-v3x1auUPQ&oe=688D36E6&_nc_sid=22de04')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTc5OS5zZHIuZjMwODA4LmRelZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fktm1-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QFF9zNCI9224lZPb6zTvitU9i65TrP34VQLilR6IovAkUPj4i2A3XqfdnFwfirIGww&_nc_ohc=XBRMgVgPIgQQ7kNvwEWf3ME&_nc_gid=kX0jUCMB76tXpjWoeS5YEA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzM3MTQ2OTM5OTA0Njk1OTI2MA%3D%3D.3-ccb7-5&oh=00_AfQGfgLwrjWII5bkkvR4cn0L7wxfZYZxebyx-v3x1auUPQ&oe=688D36E6&_nc_sid=22de04')"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10 min-h-screen flex items-end justify-end pb-16">
+    <div class="text-right max-w-xl text-white fade-in mr-8 mb-12 relative z-20 p-6 rounded-xl backdrop-blur-sm transform -translate-y-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">Men's Collection</h1>
+      <p class="text-lg md:text-xl text-primary">
+        Elegant traditional and formal wear for the modern Nepali man
+      </p>
+    </div>
+
+    <div class="btn-container fade-in mb-6 mr-4">
+      <div class="flex flex-col sm:flex-row gap-4 justify-end">
+        <a href="#collections" class="btn-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-opacity-90 transition transform hover:scale-105">
+          Explore Collection
+        </a>
+        <a href="#appointment" class="btn-outline border-primary text-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105">
+          Book Fitting
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Men's Collection Categories -->
+    <section class="py-16" id="collections">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="section-title text-4xl">Men's Collection</h2>
+          <p class="max-w-2xl mx-auto mt-4">Discover our exquisite range of traditional and formal wear for men</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Sherwanis -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="sherwanis">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTc5OS5zZHIuZjMwODA4LmRlZmF1bHR_aW1hZ2UuYzIifQ&_nc_ht=instagram.fktm1-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QFF9zNCI9224lZPb6zTvitU9i65TrP34VQLilR6IovAkUPj4i2A3XqfdnFwfirIGww&_nc_ohc=XBRMgVgPIgQQ7kNvwEWf3ME&_nc_gid=kX0jUCMB76tXpjWoeS5YEA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzM3MTQ2OTM5OTA0Njk1OTI2MA%3D%3D.3-ccb7-5&oh=00_AfQGfgLwrjWII5bkkvR4cn0L7wxfZYZxebyx-v3x1auUPQ&oe=688D36E6&_nc_sid=22de04" alt="Sherwani Collection - Maya Boutique" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Sherwanis</h3>
+              <p class="mb-4">Regal sherwanis for weddings and special occasions</p>
+              <a href="#" class="text-primary font-semibold hover:underline">View Collection</a>
+            </div>
+          </div>
+
+          <!-- Suits & Blazers -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="suits">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" alt="Suits Collection - Maya Boutique" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Suits & Blazers</h3>
+              <p class="mb-4">Elegant formal wear for business and special events</p>
+              <a href="#" class="text-primary font-semibold hover:underline">View Collection</a>
+            </div>
+          </div>
+
+          <!-- Traditional Wear -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="traditional">
+            <img src="https://images.unsplash.com/photo-1581252584894-2f5be56f3878?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Traditional Wear Collection - Maya Boutique" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Traditional Wear</h3>
+              <p class="mb-4">Authentic Nepali traditional outfits</p>
+              <a href="#" class="text-primary font-semibold hover:underline">View Collection</a>
+            </div>
+          </div>
+
+          <!-- Accessories -->
+          <div class="collection-card rounded-xl overflow-hidden fade-in" id="accessories">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Men's Accessories - Maya Boutique" class="w-full h-full object-cover">
+            <div class="collection-overlay">
+              <h3 class="text-2xl font-bold mb-2">Accessories</h3>
+              <p class="mb-4">Complete your look with our exclusive accessories</p>
+              <a href="#" class="text-primary font-semibold hover:underline">View Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Our Men's Collection -->
+    <section class="py-16 bg-maroon-dark">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2 fade-in">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-xl overflow-hidden shadow-lg transform transition hover:scale-105">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Men's tailoring at Maya Boutique" class="w-full h-64 object-cover">
+              </div>
+              <div class="rounded-xl overflow-hidden shadow-lg mt-12 transform transition hover:scale-105">
+                <img src="https://images.unsplash.com/photo-1617137968427-85924c800c22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Men's fashion design at Maya Boutique" class="w-full h-64 object-cover">
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 fade-in">
+            <h2 class="section-title text-4xl mb-6">Our Men's Collection</h2>
+            <p class="mb-4">
+              At Maya Boutique, we understand that modern Nepali men appreciate both traditional elegance and contemporary style. Our men's collection combines the finest fabrics with expert tailoring to create outfits that make a statement.
+            </p>
+            <p class="mb-6">
+              From intricately designed sherwanis for weddings to sophisticated suits for formal events, each piece is crafted with attention to detail and perfect fit. We offer customization options to ensure your outfit reflects your personal style and fits you perfectly.
+            </p>
+            <div class="bg-maroon-darker p-6 rounded-xl shadow-sm">
+              <h4 class="font-bold text-primary text-xl mb-3">Custom Tailoring Services</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <span class="text-primary mr-2">•</span>
+                  <span>Personalized design consultations</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary mr-2">•</span>
+                  <span>Premium fabric selection</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary mr-2">•</span>
+                  <span>Multiple fitting sessions for perfect fit</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary mr-2">•</span>
+                  <span>Complementary accessories pairing</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-maroon-darker">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+          <h2 class="section-title text-4xl mb-6">Ready to Elevate Your Style?</h2>
+          <p class="mb-8 text-xl">
+            Visit our store in Biratnagar for a personalized consultation or book an appointment for a custom fitting.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="index.html#store" class="btn-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-opacity-90 transition transform hover:scale-105">
+              Visit Our Store
+            </a>
+            <a href="#appointment" class="btn-outline border-primary text-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105">
+              Book Appointment
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section class="py-16" id="appointment">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="section-title text-4xl">Book Your Fitting</h2>
+          <p class="max-w-2xl mx-auto mt-4">Schedule an appointment for a personalized consultation and fitting</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="bg-maroon-dark rounded-xl shadow-lg p-8 max-w-4xl mx-auto fade-in transform transition hover:scale-[1.005]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold mb-6 text-primary">Men's Fitting</h3>
+              <p class="mb-6">
+                Our personalized fittings ensure your outfit fits perfectly and reflects your personal style. We take precise measurements and discuss fabric options to create your ideal look.
+              </p>
+              
+              <div class="bg-maroon-darker p-6 rounded-xl mb-6">
+                <h4 class="font-bold text-primary text-lg mb-3">What to Expect</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-primary mr-2">•</span>
+                    <span>60-minute private consultation</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-2">•</span>
+                    <span>Fabric and style selection guidance</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-2">•</span>
+                    <span>Precise measurements</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-2">•</span>
+                    <span>Pricing and timeline overview</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="flex items-start mb-4">
+                <div class="text-primary text-xl mr-4 mt-1">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Duration</h4>
+                  <p>1 hour</p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <form class="appointment-form">
+                <div class="mb-4">
+                  <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <input type="date" class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                  <select class="w-full px-4 py-3 rounded-lg focus:outline-none" required>
+                    <option value="" disabled selected>Service Interested In</option>
+                    <option>Sherwani</option>
+                    <option>Formal Suit</option>
+                    <option>Traditional Wear</option>
+                    <option>Accessories</option>
+                    <option>Complete Ensemble</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <textarea placeholder="Tell us about your style preferences and any specific requirements" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3 px-8 rounded-full uppercase font-semibold tracking-wider transform hover:scale-105">Book Appointment</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-12">
+    <div class="footer-content container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div>
+          <div class="text-2xl font-bold mb-4 flex items-center">
+            <img src="logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+           
+            <span class="tracking-wider text-primary">MAYA BOUTIQUE</span>
+          </div>
+          <p class="mb-6">
+            Luxury traditional and formal wear crafted with passion in Biratnagar, Nepal since 2017.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link transform hover:scale-110">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link transform hover:scale-110">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link transform hover:scale-110">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Men's Collections</h3>
+          <ul class="space-y-3">
+            <li><a href="#sherwanis" class="hover:text-primary transition-colors">Sherwanis</a></li>
+            <li><a href="#suits" class="hover:text-primary transition-colors">Suits & Blazers</a></li>
+            <li><a href="#traditional" class="hover:text-primary transition-colors">Traditional Wear</a></li>
+            <li><a href="#accessories" class="hover:text-primary transition-colors">Accessories</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Wedding Collections</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Information</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html#about" class="hover:text-primary transition-colors">Our Story</a></li>
+            <li><a href="measurement.html" class="hover:text-primary transition-colors">Measurement Guide</a></li>
+            <li><a href="index.html#store" class="hover:text-primary transition-colors">Store Location</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Care Instructions</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-primary">Contact</h3>
+          <address class="not-italic">
+            <p class="mb-2">Jahada Road, Opposite of City Palace</p>
+            <p class="mb-2">Biratnagar 56613, Nepal</p>
+            <p class="mb-2">+977-9804377178</p>
+            <p class="mb-4">mayaboutique2017@gmail.com</p>
+            <p>Sunday-Friday: 10AM - 6PM</p>
+            <p>Saturday: By appointment</p>
+          </address>
+        </div>
+      </div>
+      
+      <div class="border-t border-primary border-opacity-20 mt-8 pt-8 text-center text-gray-500">
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-primary transition-colors">Shipping & Returns</a>
+          <a href="#" class="hover:text-primary transition-colors">Size Guide</a>
+        </div>
+        <p>© 2017-2024 Maya Boutique. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky header functionality
+    const header = document.getElementById('mainHeader');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Mobile menu toggle
+    document.querySelector('.hamburger-icon').addEventListener('click', function() {
+      document.querySelector('.mobile-menu').classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelector('.mobile-menu').classList.add('hidden');
+      });
+    });
+    
+    // Mobile dropdown toggle
+    document.querySelector('.mobile-dropdown').addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    // Initialize elements as inactive
+    fadeElements.forEach(element => {
+      element.classList.remove('active');
+    });
+    
+    // Run on load and scroll
+    window.addEventListener('load', fadeInOnScroll);
+    window.addEventListener('scroll', fadeInOnScroll);
+    
+    // Form submission
+    const form = document.querySelector('.appointment-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Thank you for booking your appointment! We will contact you soon to confirm.');
+        form.reset();
+      });
+    }
+    
+    // Hero slideshow functionality
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[n].classList.add('active');
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    // Start slideshow
+    showSlide(0);
+    setInterval(nextSlide, 5000);
+  </script>
+
+</body>
+</html>
