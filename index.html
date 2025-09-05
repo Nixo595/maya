@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maya Boutique | Luxury Bridal & Ethnic Wear | Biratnagar, Nepal</title>
-  <link rel="icon" type="image/png" href="logo.png">
   <meta name="description" content="Premier bridal boutique in Biratnagar offering custom couture, designer lehengas, and luxury ethnic wear since 2017. Nepali craftsmanship meets modern elegance.">
   <meta name="keywords" content="Maya Boutique, Bridal Wear Nepal, Custom Lehengas, Wedding Sarees, Designer Sherwanis, Biratnagar Boutique, Nepali Ethnic Fashion">
+  <link rel="canonical" href="https://mayacollection.com.np" />
   <meta name="robots" content="noindex, nofollow">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -30,6 +30,7 @@
       background-color: var(--maroon-bg);
       overflow-x: hidden;
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
     
     h1, h2, h3, h4 {
@@ -105,7 +106,6 @@
       height: 100%;
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
     }
@@ -283,8 +283,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: rgba(255,255,255,0.1);
       transition: all 0.3s ease;
@@ -338,6 +338,8 @@
       border-radius: 12px;
       background-color: rgba(255, 255, 255, 0.05);
       color: var(--light);
+      min-height: 50px;
+      padding: 12px 16px;
     }
     
     .appointment-form input:focus,
@@ -446,6 +448,11 @@
       transition: 0.3s;
       cursor: pointer;
       z-index: 10;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .close:hover,
@@ -510,6 +517,233 @@
       right: 20px;
     }
     
+    /* Product showcase styles */
+    .product-showcase {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+    
+    .showcase-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    .showcase-item {
+      flex: 0 0 auto;
+      width: 300px;
+      margin: 0 15px;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba(200, 173, 127, 0.2);
+    }
+    
+    .showcase-item img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .showcase-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .showcase-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      padding: 20px;
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .showcase-item:hover .showcase-overlay {
+      transform: translateY(0);
+    }
+    
+    .showcase-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(200, 173, 127, 0.7);
+      color: var(--maroon-dark);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .showcase-nav:hover {
+      background: var(--primary);
+    }
+    
+    .showcase-prev {
+      left: 10px;
+    }
+    
+    .showcase-next {
+      right: 10px;
+    }
+    
+    .product-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    
+    .product-modal-content {
+      background-color: var(--maroon-dark);
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+      border: 1px solid rgba(200, 173, 127, 0.3);
+    }
+    
+    .product-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: var(--primary);
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .product-modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    @media (min-width: 768px) {
+      .product-modal-body {
+        flex-direction: row;
+      }
+    }
+    
+    .product-modal-image {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .product-modal-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    
+    .product-modal-info {
+      flex: 1;
+      padding: 20px 0;
+    }
+    
+    .whatsapp-cta {
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      min-height: 44px;
+    }
+    
+    .whatsapp-cta:hover {
+      background: #128C7E;
+      transform: translateY(-3px);
+    }
+    
+    /* Mobile-specific styles */
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 75vh;
+        min-height: 500px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .collection-card {
+        height: auto;
+        min-height: 300px;
+      }
+      
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .dropdown-content {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+      
+      .mobile-dropdown.active .dropdown-content {
+        display: block;
+      }
+      
+      .modal-content {
+        max-width: 95%;
+        max-height: 70vh;
+      }
+      
+      .btn-container {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 20px;
+        text-align: center;
+      }
+      
+      .showcase-item {
+        width: 250px;
+      }
+
+      .hamburger-icon {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-section {
         height: 75vh;
@@ -556,6 +790,36 @@
         margin-top: 20px;
         text-align: center;
       }
+      
+      .showcase-item {
+        width: 250px;
+      }
+
+      .hamburger-icon {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Tablet-specific styles */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .collection-card {
+        height: 350px;
+      }
+
+      .nav-links a {
+        padding: 1rem 0.5rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -566,7 +830,7 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="/" class="text-2xl font-bold flex items-center">
         <div class="flex items-center space-x-4">
-          <img src="logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+          <img src="images/logo/logo.png" alt="Maya Boutique Logo" class="w-12 h-12 rounded-full border-2 border-white shadow-md" loading="eager">
           
           <div>
             <span class="font-serif text-xl tracking-wider text-primary">MAYA</span>
@@ -596,10 +860,10 @@
         </ul>
         
          <div class="flex items-center space-x-4 ml-4">
-          <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-lg hover:text-primary transition-colors">
+          <a href="https://www.facebook.com/mayaboutiquebrt/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-lg hover:text-primary transition-colors social-link">
             <i class="fab fa-facebook"></i>
           </a>
-          <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-lg hover:text-primary transition-colors">
+          <a href="https://www.instagram.com/mayaboutique_brt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-lg hover:text-primary transition-colors social-link">
             <i class="fab fa-instagram"></i>
           </a>
           <a href="https://www.tiktok.com/@mayaboutique" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link">
@@ -614,26 +878,26 @@
     
     <div class="mobile-menu hidden md:hidden bg-maroon-dark py-4 px-6 shadow-lg">
       <div class="flex flex-col space-y-3">
-        <a href="#home" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Home</a>
+        <a href="#home" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors min-h-[44px] flex items-center">Home</a>
         
         <div class="mobile-dropdown">
-          <div class="flex justify-between items-center py-2 border-b border-primary border-opacity-20 cursor-pointer">
+          <div class="flex justify-between items-center py-2 border-b border-primary border-opacity-20 cursor-pointer min-h-[44px]">
             <span>Collections</span>
             <i class="fas fa-chevron-down text-primary"></i>
           </div>
           <div class="dropdown-content">
-            <a href="#bridal" class="py-2 pl-4">Bridal</a>
-            <a href="#women" class="py-2 pl-4">Women</a>
-            <a href="#men" class="py-2 pl-4">Men</a>
-            <a href="#kids" class="py-2 pl-4">Kids</a>
-            <a href="#Sarees" class="py-2 pl-4">Sarees</a>
+            <a href="#bridal" class="py-2 pl-4 min-h-[44px] flex items-center">Bridal</a>
+            <a href="#women" class="py-2 pl-4 min-h-[44px] flex items-center">Women</a>
+            <a href="#men" class="py-2 pl-4 min-h-[44px] flex items-center">Men</a>
+            <a href="#kids" class="py-2 pl-4 min-h-[44px] flex items-center">Kids</a>
+            <a href="#Sarees" class="py-2 pl-4 min-h-[44px] flex items-center">Sarees</a>
           </div>
         </div>
         
-        <a href="#about" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Story</a>
-        <a href="measurement.html" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Measurement</a>
-        <a href="#store" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors">Our Store</a>
-        <a href="#contact" class="py-2 hover:text-primary transition-colors">Contact</a>
+        <a href="#about" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors min-h-[44px] flex items-center">Our Story</a>
+        <a href="measurement.html" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors min-h-[44px] flex items-center">Measurement</a>
+        <a href="#store" class="py-2 border-b border-primary border-opacity-20 hover:text-primary transition-colors min-h-[44px] flex items-center">Our Store</a>
+        <a href="#contact" class="py-2 hover:text-primary transition-colors min-h-[44px] flex items-center">Contact</a>
       </div>
     </div>
   </header>
@@ -644,25 +908,25 @@
 <section class="hero-section relative" id="home">
   <!-- Slideshow -->
   <div class="slides">
-    <div class="hero-slide active" style="background-image: url('https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OgfopwkC_k0Q7kNvwFU-XDG&_nc_oc=AdmlWuWK9UuGPjoebnoa29f98lY_k7X4eJ0bvkPDIhfd8WLAaFPKe0eRRSpuHM0CbsDZSJ3DotAv-QrMGWazBldi&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=hdfDdZn-O_0f-M70SvDLow&oh=00_AfU_tZzWKu1SGkIURLJgqelSwgs4prEVRZJ7YbXvqtQ8jQ&oe=68AD0252')"></div>
-    <div class="hero-slide" style="background-image: url('https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/480671543_1131393188997512_7899745808690379307_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=RKbB-oqhWKUQ7kNvwGjmEp4&_nc_oc=AdlVldFxvSGeQYCZ9z6m3etCgL0CRX-xq0O3Nx06JmdN3LgYwqrzR9nqVp_TtUbxapMrr8QKHHlIx2ixOgHfdxvo&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=fdGBzRHBTEIkvHR7VjfOIQ&oh=00_AfV74vx9OXyiJIH58EK33MnvFWRooyYcs57yuGEUqbdGgw&oe=68AD01C8')"></div>
-    <div class="hero-slide" style="background-image: url('https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/482984661_1149084780561686_3564897061957763796_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_tfNDQ8OZJ8Q7kNvwEtOqmf&_nc_oc=AdkhG3bXC9cajaVyjTRs42tZQoVtSHTKrhh7gDF37tO_82t3tBsfh18SJ2eywfYqOajAHEiuNKuRwCDeabKHVhxu&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=dmFg9RnFcNo9-PCD7xiB-Q&oh=00_AfXIazBelDZnVKwJsPYXtLHQJdO3-IdVmYdE8LffqVr-Qg&oe=68ACE8F7')"></div>
+    <div class="hero-slide active" style="background-image: url('images/Gallery/5.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=qMqsLoBA930Q7kNvwH5mwej&_nc_oc=Adni_2EQN4gOdYM-4U78hY6-kXRc_oOt-nX7eg1G4fCvt79JnllfubX4cDAqtUtFHhw&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=O7_wD-huoRyLbyMc6d68xg&oh=00_AfXTN869BLGQqLcErcirl_7o97AZw441fiM2YemL2cZsnw&oe=68B78E52')"></div>
+    <div class="hero-slide" style="background-image: url('https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/480671543_1131393188997512_7899745808690379307_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF_UxQYZuLXxzxo_0LopOTD88rpKd3YvNPzyukp3di803MvqMgMlhTSffNIMtq-Movi43vrzqI3H8WJ25wBwxCa&_nc_ohc=FpXTW00RD2cQ7kNvwGodkbl&_nc_oc=Adke0p_h_irva-bBLOhvaj6ScGWtk81HBuZLybYK7bDX2oFTfUsJbynFeGK-xuuMXck&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=-cbfCdh9XcuWR2HGAHHD9Q&oh=00_AfXW8Q_Kv7Z7DD4c67ggH0pB0bK8g6g9yjv_qLhHl2eb5Q&oe=68B78DC8')"></div>
   </div>
   
-  <div class="container mx-auto px-4 relative z-10 min-h-screen flex items-end justify-end pb-16">
-    <div class="text-right max-w-xl text-white fade-in mr-8 mb-12 relative z-20 p-6 rounded-xl backdrop-blur-sm transform -translate-y-6">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-primary">Crafting with Maya</h1>
-      <p class="text-lg md:text-xl text-primary">
+  <div class="container mx-auto px-4 relative z-10 min-h-screen flex items-center md:items-end justify-center md:justify-end pb-16">
+    <div class="text-center md:text-right max-w-xl text-white fade-in md:mr-8 md:mb-12 relative z-20 p-6 rounded-xl backdrop-blur-sm transform -translate-y-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-primary">Crafting with Maya</h1>
+      <p class="text-base sm:text-lg md:text-xl text-primary">
         Luxury bridal and ethnic wear in Biratnagar, Nepal
       </p>
     </div>
 
-    <div class="btn-container fade-in mb-6 mr-4">
-      <div class="flex flex-col sm:flex-row gap-4 justify-end">
-        <a href="#collections" class="btn-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-opacity-90 transition transform hover:scale-105">
+    <div class="btn-container fade-in md:mb-6 md:mr-4 absolute bottom-10 md:static w-full px-4 md:px-0 md:w-auto">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+        <a href="#collections" class="btn-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-opacity-90 transition transform hover:scale-105 w-full sm:w-auto text-center">
           Explore Collections
         </a>
-        <a href="#store" class="btn-outline border-primary text-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105">
+        <a href="#store" class="btn-outline border-primary text-primary py-3 px-8 rounded-full uppercase font-semibold tracking-wider hover:bg-white hover:bg-opacity-10 transition transform hover:scale-105 w-full sm:w-auto text-center">
           Visit Our Store
         </a>
       </div>
@@ -674,15 +938,15 @@
     <section class="py-16" id="collections">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12 fade-in">
-          <h2 class="section-title text-4xl">Signature Collections</h2>
-          <p class="max-w-2xl mx-auto mt-4">Discover our curated range of luxury ensembles for every special occasion</p>
+          <h2 class="section-title text-3xl md:text-4xl">Signature Collections</h2>
+          <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg">Discover our curated range of luxury ensembles for every special occasion</p>
           <div class="luxury-divider"></div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Bridal Collection -->
           <div class="collection-card rounded-xl overflow-hidden fade-in" id="bridal">
-            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/483100257_1150075693795928_347352959836987856_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeElEIO_f7VrXpZ6kc3pxC8dBmwZOSI-ac0GbBk5Ij5pzZeN9-p4RkvpkG_pyBcycACE0QxbZTCLrhe1dmPHtYyZ&_nc_ohc=zCJieUPQPmUQ7kNvwHSVfBQ&_nc_oc=AdkCu2GDy6B4KJ5nWnWZdUvs6jzBC7IxbFAOJV_xqfgdNJ3KqRYAYo56wLO9XpjjBeChC_225hcJ5pocs__3x3Sk&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=WstHSInhB5ySs4N-ATGbAA&oh=00_AfU5rNkIvr-yeAxyaUqGKrfmPHKo-FPi9sbLYjAYGksTRQ&oe=68B2ED6B" class="w-full h-full object-cover">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/483100257_1150075693795928_347352959836987856_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeElEIO_f7VrXpZ6kc3pxC8dBmwZOSI-ac0GbBk5Ij5pzZeN9-p4RkvpkG_pyBcycACE0QxbZTCLrhe1dmPHtYyZ&_nc_ohc=ibZMFKznREkQ7kNvwHahpDV&_nc_oc=Adkey7GGgt7A2L_jmm-S0AJEUN8uIsSQ5EiZHwAgahHh9SveWews-TN62nmMdeic15s&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=y2twDtUL2Lkhig252dl63Q&oh=00_AfXqt4gl8BMOl2beoHb0vLMHWc36QLJ07_KveecW8-BbAw&oe=68B78AAB" alt="Maya Boutique Bridal Collection" class="w-full h-full object-cover" loading="lazy">
             <div class="collection-overlay">
               <h3 class="text-2xl font-bold mb-2">Bridal Couture</h3>
               <p class="mb-4">Exquisite lehengas and sarees for your special day</p>
@@ -692,7 +956,7 @@
 
         <!-- Women's Collection -->
           <div class="collection-card rounded-xl overflow-hidden fade-in" id="women">
-            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/483568860_1149083917228439_6120114613266213039_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE-lDrmz24ZzlzYeI_RD4EAn9Vhho7Y4CKf1WGGjtjgIqhJzh8NGMkQdkWsA5gMN0mOyRldaGL09fCKgquU6Lha&_nc_ohc=aPG5uysE1LwQ7kNvwErdiND&_nc_oc=Adnl5bSSES1kgXmCtKpqvVSIZcRD50nTxKht7R_ihIk3uNC8RO4qpI9JNoyfC5DVS55R1M06IQsFFtO9-DvQKIKo&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=WTNb7SguyWdNa1npEmTNXQ&oh=00_AfWkIIq-1kUFMD48eIfJzzlUsiiGtEHu8wBNnbbtrl5uHg&oe=68B2E17E" alt="Maya Boutique Women's Collection - Elegant ethnic wear" class="w-full h-full object-cover">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/483568860_1149083917228439_6120114613266213039_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE-lDrmz24ZzlzYeI_RD4EAn9Vhho7Y4CKf1WGGjtjgIqhJzh8NGMkQdkWsA5gMN0mOyRldaGL09fCKgquU6Lha&_nc_ohc=BxcFS8c3rMgQ7kNvwEd3ZfE&_nc_oc=AdlhbooeRssv6T1OZD6K48ermAQxcaZAxMoVibkz0_6DnYOiK73IsEoTGTR46fzzDO4&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=1gvUE5hnzSp3NgcHgJsOsg&oh=00_AfVDPFj6CjwwTFbzPcOABupuL5MB8lg8I_knFyYj0ydOJA&oe=68B77EBE" alt="Maya Boutique Women's Collection - Elegant ethnic wear" class="w-full h-full object-cover" loading="lazy">
             <div class="collection-overlay">
               <h3 class="text-2xl font-bold mb-2">Women's Ensemble</h3>
               <p class="mb-4">Elegant ethnic wear for weddings and celebrations</p>
@@ -702,19 +966,19 @@
 
           <!-- Men's Collection -->
           <div class="collection-card rounded-xl overflow-hidden fade-in" id="men">
-            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=nPRhDheHy50Q7kNvwEKaYf-&_nc_oc=AdmV3cYlDmJ6sRKyP0rSq2oeu5YvxHVwD8TVGqyqHFcG2VoGHIYzwMoypy4163a3QiO_FfMf5Uql-KKZMqde7MzH&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=O1k2Gab_kqVRjzr0b_H47w&oh=00_AfU8n4pFCGbbVrE-6HwESISaDMI9E7hYd4UdCd_J4vasZw&oe=68AD1326" alt="Maya Boutique Men's Collection - Nepali Groom" class="w-full h-full object-cover">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469447532_18350604484192874_9209833273094222321_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEnKMo3OHhBbMoqjS5qglKe8WWXzH36GSvxZZfMffoZK_8MuOAWaT5WUAJNtskbuzKYPZiiu7BYIFdK5ecrrgyf&_nc_ohc=QGzEVDUdEAMQ7kNvwHLtmMj&_nc_oc=AdlMb7wOqLoW8gnTM4LqnRhTAKNbBvsMFsHBBMyhMkZEOsIKn7XFX05Uo-sB07jni2o&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=TJxcfziUCF1L0b_H8aoFAA&oh=00_AfU0f4s9WGAq20E8nK1T036k9fwJh7uoaq37639SWSobjA&oe=68B79F26" alt="Maya Boutique Men's Collection - Sherwanis and traditional outfits" class="w-full h-full object-cover" loading="lazy">
             <div class="collection-overlay">
               <h3 class="text-2xl font-bold mb-2">Men's Attire</h3>
               <p class="mb-4">Regal sherwanis and traditional outfits</p>
-              <a href="/mens/" class="text-primary font-semibold hover:underline">Explore Collection</a>
+              <a href="#" class="text-primary font-semibold hover:underline">Explore Collection</a>
             </div>
           </div>
         </div> 
 
         <!-- Kids Collection -->
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="collection-card rounded-xl overflow-hidden fade-in" id="kids">
-            <img src="https://instagram.fktm19-1.fna.fbcdn.net/v/t51.2885-15/531810792_18381322789192874_6281701338262766191_n.jpg?stp=dst-jpg_e35_p480x480_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTgzOS5zZHIuZjgyNzg3LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fktm19-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QG0BtG4WJlglNqTIbEiV0RURcWHqbMkgA4vlbE492LI9ixjLTXGozAFv86qxQKzxn8WEnS19k8m8yowNHL6GkSE&_nc_ohc=_1Ngk-xInssQ7kNvwESW6rn&_nc_gid=PjuyqRSMoeRR3ffmFbLzbQ&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzY5ODE4MDU4NDQ3OTI3NzgzNA%3D%3D.3-ccb7-5&oh=00_AfWwjoCaZKG14L6o16Iasmcuo_LT9nBMz2eu9JjRIU_Itw&oe=68B30304&_nc_sid=7a9f4b" class="w-full h-full object-cover">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.82787-15/522648261_18378489418192874_7960173927349057094_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGBfJkAlh7N7h82oDPuYJp4c_Exc-iyQm1z8TFz6LJCbVtpiHU-csMsMYBBvYxMUSQN-WzJB6iRPQU1Hje3UDu1&_nc_ohc=t176enqqJEcQ7kNvwHwOzRd&_nc_oc=AdksicJwRNSFI3_JV1oBqZBqi5CYa-bdVKiTYTpfqGOxk8nwt8HV2UX8q6nFywwCZeg&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=f05ducckDUcTBSaE8BcGmg&oh=00_AfUfIdXLVVmw9r4jTS4kNlxj5aMCLyQoqg1mRKN-_Og-Rg&oe=68B77E03" alt="Maya Boutique Kids Collection" class="w-full h-full object-cover" loading="lazy">
             <div class="collection-overlay">
               <h3 class="text-2xl font-bold mb-2">Kids Collection</h3>
               <p class="mb-4">Adorable traditional outfits for children</p>
@@ -724,7 +988,7 @@
           
           <!-- Sarees Collection -->
             <div class="collection-card rounded-xl overflow-hidden fade-in" id="Sarees">
-            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469674626_18351233053192874_6102983975565658695_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGZSYfGOIyaDYzK8pOmqcUBx_G2NzMB_hHH8bY3MwH-ER-VJKrXVtnXei2kL18AYeYwbEvSHM40njiv5Rul0KD1&_nc_ohc=q-EDTnyA2T4Q7kNvwHQNF6-&_nc_oc=AdnJo0ITih9q4chLw4XO5U3h-BXN7cOLe7Ll_wJ4Ubny1te2h8Wk5VeVIPio6F5NCrNtiRtLhwxed6t2ZT_mEcvY&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=Ou4kp1w3sdAYf3OVsyu9_w&oh=00_AfVFkm9D1WHyVI1DfmQ_M-ofwy7DZCwQ_hOS7Z9rnWPi8g&oe=68B2E80B" alt="Maya Boutique saree" class="w-full h-full object-cover">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469674626_18351233053192874_6102983975565658695_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGZSYfGOIyaDYzK8pOmqcUBx_G2NzMB_hHH8bY3MwH-ER-VJKrXVtnXei2kL18AYeYwbEvSHM40njiv5Rul0KD1&_nc_ohc=T5t9odRB94wQ7kNvwFaBFq8&_nc_oc=AdkZlKTCwavJSCjtfimM6HmiasO0ke-KRE0T8fPcTQGb12QVeZTk3ruFPvFpuRHBSSI&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=wRDWEUua62PRy9MdZKeIuw&oh=00_AfVVlNiyepLOohpqDMFEhNJRDg63s9SAZA8s1qJc15TU4Q&oe=68B7854B" alt="Maya Boutique saree" class="w-full h-full object-cover" loading="lazy">
             <div class="collection-overlay">
               <h3 class="text-2xl font-bold mb-2">Sarees</h3>
               <p class="mb-4">Complement your look with our exclusive Saree</p>
@@ -735,39 +999,200 @@
       </div>
     </section>
 
+    <!-- New Arrivals Section -->
+    <section class="py-16 bg-maroon-dark">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="section-title text-3xl md:text-4xl">New Arrivals</h2>
+          <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg">Discover our latest designs and exclusive collections</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="product-showcase relative">
+          <div class="showcase-container" id="newArrivalsContainer">
+            <!-- New Arrival Items -->
+            <div class="showcase-item" data-id="1">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/466539552_18347563126192874_8386536565634866300_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFum5DY6llEfoq-BDs6hWSdq-ipkGJ_0Xur6KmQYn_Re9krPddTH8yuMSLckDjPmGrRRN8Z98--zSYpwYoBzWYq&_nc_ohc=bagIIONzIzQQ7kNvwHusFYO&_nc_oc=AdkBC37leiH9XuhdhoRi7zWUAiTqKWe4EAqMA2i5eGWyBLmt75jjaZ-i24LjH0utqeo&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=KmK8SwcdG26pKEP09nQasg&oh=00_AfVIcSQS-pnfmXrlIS7s2owXwr6AZTU634ZmeFYk_M4HlA&oe=68B785BB" alt="New Bridal Collection" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Bridal Elegance</h3>
+                <p class="text-sm">Hand-embroidered lehenga with intricate detailing</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="2">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/463996959_18344528650192874_3790331217054383728_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGeI8v9jUORgup9XKPZkjya-A-W-c9a6vv4D5b5z1rq-4OyHzlWhg3VnzNeFjX3PX73W9ESapCYzaCuygzbdRC_&_nc_ohc=-P7oCvqEtacQ7kNvwGcr8tL&_nc_oc=Adno2Jhpku48oFoviDEit6IDQMo1_nWU9YkTcI6eYUTRWAbolBFvCm2uMl09yvWkCYw&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=z_dqHkX_b-1uHfKVXmxxvA&oh=00_AfW3IiHymZaSIa97KVOpKrPgxnP1lFec-RdnWY0fNd-nUw&oe=68B79FD9" alt="New Saree Collection" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Silk Elegance</h3>
+                <p class="text-sm">Premium Banarasi silk saree with golden zari work</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="3">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/467749116_18348811543192874_7122094642888641699_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFz3lcOkbgcYhBFMEk6fdHqgcy13TlRQYyBzLXdOVFBjBWgb1xeJftrWYc6qpoYuHftQTklDizEmhoCQrgJ0e3G&_nc_ohc=21IU_7c59r8Q7kNvwG6Bz8x&_nc_oc=Adm1JMCjjsBm2BNoDZhzu8t8j03ySI46RBkzex8xegP1uL6PAC21FfWuFwxREwyQO_c&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=e8fYgYtkQJpG8f3PN5N2Ug&oh=00_AfVrO-hncOJUtC1hwCjJcX8KqMyqWTZTh9exZKbntzedLw&oe=68B788BB" alt="New Men's Collection" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Royal Sherwani</h3>
+                <p class="text-sm">Embroidered sherwani with traditional motifs</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="4">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/464062852_18344529499192874_7317885342891995528_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHLelwgVbu5VPWpzt2WS1xodcS4qZimJah1xLipmKYlqLbe6EymEB6fAWHlMDm02JY5iJB72xu7imNMCn7wmx2k&_nc_ohc=BbKs24ZnNhsQ7kNvwGVn9Gg&_nc_oc=Adlm6VtZCuKN2iYrISm7RRQ6PI5sBTgGFOFkpTLaogEzxv_Y76YUwfvq5ot1l1dxlP4&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=eaaoK3IMCTYb3c3kXjyqGg&oh=00_AfX-YDIWcQdeUssu1Hw1Mev7vCtN-oUsWKSLLtTXI-hXBA&oe=68B77FF8" alt="New Women's Collection" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Designer Lehenga</h3>
+                <p class="text-sm">Contemporary design with traditional craftsmanship</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="5">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/466696910_18347655427192874_5634864047795221911_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFgQzwfvs2wwbXp0bU0BM-pY8JABxBkXVljwkAHEGRdWUdI8ePf_ERkz_G6UixIU5MeGqMoR7uv6g3chDVcEVVc&_nc_ohc=jchYi-auTdYQ7kNvwFwCSAN&_nc_oc=AdmKYHPfbTYJ2hK4ssR8bKeRTve-Hrzj8yKszNQhdPKmZL_0hvYUGJaLMV4pm5DZTKU&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=vEgb7WJva7X7Twox9e-RWA&oh=00_AfUXeevpfR8pf3J3UJf5Va4MtYKL4sAwi8gYRAAj3p5fYA&oe=68B771EB" alt="New Kids Collection" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Little Royals</h3>
+                <p class="text-sm">Traditional outfits for the little ones</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="showcase-nav showcase-prev" id="newArrivalsPrev">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="showcase-nav showcase-next" id="newArrivalsNext">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="section-title text-3xl md:text-4xl">Trending Now</h2>
+          <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg">Explore our most sought-after designs this season</p>
+          <div class="luxury-divider"></div>
+        </div>
+        
+        <div class="product-showcase relative">
+          <div class="showcase-container" id="trendingContainer">
+            <!-- Trending Items -->
+            <div class="showcase-item" data-id="6">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469856462_18351235048192874_6843777127656305268_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFbrotRSgozW26bd2Asd2xOCB0GVlzjlkMIHQZWXOOWQw9aZsc5pwntyTtvN-n8sBuU6MOayF1345vBnwg-P80t&_nc_ohc=elEwaaR5-xQQ7kNvwH5aTPL&_nc_oc=AdlD0ftAYmZZTKcx3vVOdcLu3-_Icm3Dniayj84vUavAzgoOdxYrARh37cMu8hRtFgY&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=wxgUramQY_Wq9C7S3lodHQ&oh=00_AfU0D0CNyezgozFGIdmFdIsetadygF8EjCq3BvASmwaNPQ&oe=68B7947A" alt="Trending Bridal Wear" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Royal Red Lehenga</h3>
+                <p class="text-sm">A favorite among our brides this season</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="7">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469643621_18351234931192874_209187295766405270_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGvkaS2hFkVHnjYRTIUpqCV56bc9fxaQa3nptz1_FpBrXyyoQEyJwTy-Myh64xM-D1uBBGR-1whD2LA0Ht_bgYS&_nc_ohc=fjyQkkod-ToQ7kNvwFoE3bJ&_nc_oc=AdmI3crjleg2WbUchh3Sygf94kWNz2q3LjkIvQptYE-RS-zKwQTJJOTk24TSO2Asits&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=dy8iA4x1H3iMSdtB78xBgQ&oh=00_AfWPCmzfibOxeBCFLY0URy_2UoZN7Y4S7qo27itKxdh1xA&oe=68B7735F" alt="Trending Couple Outfits" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Matching Ensemble</h3>
+                <p class="text-sm">Coordinated outfits for the perfect couple</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="8">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469648925_18351234847192874_4774870560779065293_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG6_SlN1epxGk7T91QLwxRJFrkdji9nGs4WuR2OL2cazp8z2lkLaSeQ1pxJGS4Vmf3QioxKDolNdUzh7nEkkP9d&_nc_ohc=w-RBxWURInIQ7kNvwHXQDLs&_nc_oc=AdkwYSYmesV7lB_5e0Ls_KCPFbzsHeshMVI3dDaxevHrsi7Lgfa8zRdra8lMO2WqJ2U&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=m9gXvHmOY1CaqRuilGmDSw&oh=00_AfXky3enTkIAQojv4sT1wEAPoRNn8Ip6p-_6K71aAv9SDw&oe=68B7812E" alt="Trending Accessories" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Bridal Jewelry</h3>
+                <p class="text-sm">Traditional Nepali bridal jewelry sets</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="9">
+              <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/469549264_18351146023192874_4851911270889720335_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEtCHteaJtlJB8_XSc4-v3xBjYstLMgvHQGNiy0syC8dLngGZwhxaGH3Bj0rSk60I6A_mw8mmAaDY5YcMGvmd0m&_nc_ohc=0sQnKUzbhogQ7kNvwE_BnHw&_nc_oc=Adlq7IuYc516Mq3Yb9-mdy_JtQ1riRKn2iZvVQSj4dVFO6x5cmIhVmGKnsaftpQnxsg&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=fqPMXMvpGQYg5zUlxyRwZg&oh=00_AfUvjT4Id4woYqjm97C0xL7vqxwqfr0-BeNFHTzvgbXKBA&oe=68B79F65" alt="Trending Men's Wear" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Designer Sherwani</h3>
+                <p class="text-sm">Contemporary take on traditional men's wear</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+            
+            <div class="showcase-item" data-id="10">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/470899729_18352828684192874_1925957311425504803_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFG3qHAHN8Fvb_lU3mnOuQOQJXxaEOf0fxAlfFoQ5_R_JicbbJhYaEtugWTmnBtQCx-YFPkWGkM6AH02MpaJaNy&_nc_ohc=SeD5Fj53mpgQ7kNvwFiNg1H&_nc_oc=AdkCZXd9n0xYFNxh9DNy09wVQwPy85-6yQ5NJ-OgpZ9KGN-hEK8Kf_DF-6AALBEjzXQ&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=5eSKkh-pDwSo2VNuN1Hjvg&oh=00_AfV2-eHmmbJK6mvkz5lYZot1qOlTLy5N7YLYDOXnyziBdQ&oe=68B78C39" alt="Trending Traditional Wear" loading="lazy">
+              <div class="showcase-overlay">
+                <h3 class="text-xl font-bold">Classic Daura Suruwal</h3>
+                <p class="text-sm">Traditional Nepali attire with modern fit</p>
+                <button class="view-details-btn mt-2 text-primary font-semibold text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="showcase-nav showcase-prev" id="trendingPrev">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="showcase-nav showcase-next" id="trendingNext">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="product-modal">
+      <div class="product-modal-content">
+        <span class="product-modal-close">&times;</span>
+        <div class="product-modal-body">
+          <div class="product-modal-image">
+            <img id="modalProductImage" src="" alt="Product Image">
+          </div>
+          <div class="product-modal-info">
+            <h2 id="modalProductTitle" class="text-2xl md:text-3xl font-bold text-primary mb-4"></h2>
+            <p id="modalProductDescription" class="mb-6"></p>
+            <div class="product-details mb-6">
+              <h3 class="text-xl font-semibold mb-2">Details</h3>
+              <ul id="modalProductDetails" class="list-disc pl-5">
+                <!-- Details will be added by JavaScript -->
+              </ul>
+            </div>
+            <a href="https://wa.me/9779804377178?text=Hello%20Maya%20Boutique,%20I'm%20interested%20in%20this%20product:" id="whatsappLink" class="whatsapp-cta">
+              <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Gallery -->
     <section class="py-16">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12 fade-in">
-          <h2 class="section-title text-4xl">Moments of Elegance</h2>
-          <p class="max-w-2xl mx-auto mt-4">Capturing the beauty and joy our creations bring to special occasions</p>
+          <h2 class="section-title text-3xl md:text-4xl">Moments of Elegance</h2>
+          <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg">Capturing the beauty and joy our creations bring to special occasions</p>
           <div class="luxury-divider"></div>
         </div>
         
         <div class="gallery-grid">
-          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/481205842_1142547164548781_3470909088754454688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9aj8Z6eQYpv4vYGtuJZJNQKZjwASs7WtApmPABKztaxlmLMqLY6cYoegoFNiT4LVzSdOni0ZH4htBtxc7stt4&_nc_ohc=q-_kZgRrO6IQ7kNvwHDrUbE&_nc_oc=AdmlJRSpccRCT9vcg6ZqvvnRIxDjh32Mzxj0iogab3I8fbRhWt5Jf4hJI67HGdCIej4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=RB0LsmWxsz5Xhopr0wPT9g&oh=00_AfQYuH9yVmqUeB4o5UzwfnxK9LN_g2jEVtNs--Gcipc-Og&oe=688BFF66">
-            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/481205842_1142547164548781_3470909088754454688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE9aj8Z6eQYpv4vYGtuJZJNQKZjwASs7WtApmPABKztaxlmLMqLY6cYoegoFNiT4LVzSdOni0ZH4htBtxc7stt4&_nc_ohc=q-_kZgRrO6IQ7kNvwHDrUbE&_nc_oc=AdmlJRSpccRCT9vcg6ZqvvnRIxDjh32Mzxj0iogab3I8fbRhWt5Jf4hJI67HGdCIej4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=RB0LsmWxsz5Xhopr0wPT9g&oh=00_AfQYuH9yVmqUeB4o5UzwfnxK9LN_g2jEVtNs--Gcipc-Og&oe=688BFF66" alt="Bride in Maya Boutique lehenga - Wedding ceremony">
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.82787-15/521581516_18378489181192874_3025371000794324362_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGAWzs5cmcKz69dmaquRnxQeW6-RMMyVSt5br5EwzJVKxHcdXTReO-xIElBwIHppf65petfQPSb01W8FV9pjMAb&_nc_ohc=9ra2ZgFBM3gQ7kNvwFQcObX&_nc_oc=AdlruIDVtxPzkplxp6gzwGARsJhUxibn4ze0yUw3b3u5MOXysg0TEXlm2S31XbqXq3U&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=pNFXQiymfoygrVzG-xlV8g&oh=00_AfUVgoBCVEKx8qdcTSP-m9wkZ5Y6LFUqqIkCLZ4bbil9bQ&oe=68B780ED">
+            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.82787-15/521581516_18378489181192874_3025371000794324362_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGAWzs5cmcKz69dmaquRnxQeW6-RMMyVSt5br5EwzJVKxHcdXTReO-xIElBwIHppf65petfQPSb01W8FV9pjMAb&_nc_ohc=9ra2ZgFBM3gQ7kNvwFQcObX&_nc_oc=AdlruIDVtxPzkplxp6gzwGARsJhUxibn4ze0yUw3b3u5MOXysg0TEXlm2S31XbqXq3U&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=pNFXQiymfoygrVzG-xlV8g&oh=00_AfUVgoBCVEKx8qdcTSP-m9wkZ5Y6LFUqqIkCLZ4bbil9bQ&oe=68B780ED" alt="Bride in Maya Boutique lehenga - Wedding ceremony" loading="lazy">
             <div class="gallery-overlay">
               <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
             </div>
           </div>
           
-          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=bv0FxiElV5YQ7kNvwFYJXxS&_nc_oc=AdlwZG0ujgwcdEMtFPyEjPePf79f14GbRH4O7q2c45vcAjMgaBUpGXAKQrbyt_4JzOg&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=z5Ze5Pqji_V7NA8WiIp53w&oh=00_AfRE5H5H1D9qvNVS3cDZqLPcKeIFhOvsXpvV17wlA-JCkQ&oe=688C0CD2">
-            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/480335288_1131393258997505_7019568816028591434_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFdsVtB2w9yIDgSNUBIS8P12wv1Tj6s4R_bC_VOPqzhH7D-AvVeRA5BFipvqmOQuDX0WAW7MqDA8SPf0UD5Mzwo&_nc_ohc=bv0FxiElV5YQ7kNvwFYJXxS&_nc_oc=AdlwZG0ujgwcdEMtFPyEjPePf79f14GbRH4O7q2c45vcAjMgaBUpGXAKQrbyt_4JzOg&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=z5Ze5Pqji_V7NA8WiIp53w&oh=00_AfRE5H5H1D9qvNVS3cDZqLPcKeIFhOvsXpvV17wlA-JCkQ&oe=688C0CD2" alt="Couple in traditional Nepali wedding attire">
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469119187_18350606968192874_2395977637635282548_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHe0R1dmUXscuJooniBAw5sV_HqvUeaqgJX8eq9R5qqAnTr0vuOVRXfTpy-ViRV3TOMpWuVTLR7z5ySuxyTfvCu&_nc_ohc=BgarsGDi11sQ7kNvwEF63qF&_nc_oc=Adl6aGy-dZXMzajWFbqaUBI70F2MkWOVI27YPwKxcwVuCHjsV4Pf2PhY6ntpOZuofjQ&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=IV3QOwifSPrwp2GikoiIzg&oh=00_AfW3ZUU_Sb3K0hubJRAjANU3A37O5A_ZSSKIqRBaNxKRbg&oe=68B7A3DC">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469119187_18350606968192874_2395977637635282548_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHe0R1dmUXscuJooniBAw5sV_HqvUeaqgJX8eq9R5qqAnTr0vuOVRXfTpy-ViRV3TOMpWuVTLR7z5ySuxyTfvCu&_nc_ohc=BgarsGDi11sQ7kNvwEF63qF&_nc_oc=Adl6aGy-dZXMzaj-WFbqaUBI70F2MkWOVI27YPwKxcwVuCHjsV4Pf2PhY6ntpOZuofjQ&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=IV3QOwifSPrwp2GikoiIzg&oh=00_AfW3ZUU_Sb3K0hubJRAjANU3A37O5A_ZSSKIqRBaNxKRbg&oe=68B7A3DC" alt="Couple in traditional Nepali wedding attire" loading="lazy">
             <div class="gallery-overlay">
               <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
             </div>
           </div>
           
-          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/472019499_18354883621192874_2976118541682528536_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHtGpRGhACLlAunxRPr2-4996uCX-PYp-v3q4Jf49in63M6yFIgWoDxBujTmzgrP6TWlSmmJ1eE7Tt9u1un7-hB&_nc_ohc=knnyvMw850cQ7kNvwGmSYTO&_nc_oc=Admzi0fZnL-4IHZ8oFz-puc_xxJarRgowvF5mw6g1YIVTZHzPGZ3Fp6jSu3479wl87ncF0mRYBmSuWVN1q30c4N2&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=ZsYWvaBcprBOazTlcKxf0A&oh=00_AfTHwO4TTRR4nMPzpbrjGtFB-Bb_upSQXkrOotljoaCTXQ&oe=68899D7A">
-            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469167156_18350612098192874_3896431603254022339_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzodimUb3aZhGYBRu16fHLOUBpblZe8nU5QGluVl7ydfEsF5cbPsgzG2R8OxQfVO3eBzYBwFmZhuZHkPZce74z&_nc_ohc=BLgNuoUjOkEQ7kNvwEP8E8m&_nc_oc=AdmW6pQmPFaIWpks1vaFfbwxWwY9S9_xEZLOHhDk9d_O4apvgadKr0jKbwuVDsyPOBI&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=FacC1T781hz7mbgkKBFI5Q&oh=00_AfRLCm--YSLHblDwU7npEAiBTng0iSTwu8EYjLepLLJ64w&oe=688C1E9A" alt="Bride's intricate jewelry and mehendi details">
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469315950_18350605564192874_9043819646767404971_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzLJzLCCVpFaMzfMeWSzE0XYuMiPAISgpdi4yI8AhKCntQyHQEDhvRIehsT01SE37FJ68-BBuy7w4bMBDwwr1F&_nc_ohc=Xj_QagrrLLIQ7kNvwGMf4wW&_nc_oc=AdnQxPeIIS0AK9a84FvV_-fLj9AEamLNMYkaO8JVJ-NGX75cDH8UqG5zy_DEBdNPFno&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=RRtx4rae8DN-zwk86p5VVg&oh=00_AfVQWjEjTL7ew3W-KiiUQLR4IehHAr5Yx_v-3FDwmpnRKg&oe=68B79510">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469315950_18350605564192874_9043819646767404971_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzLJzLCCVpFaMzfMeWSzE0XYuMiPAISgpdi4yI8AhKCntQyHQEDhvRIehsT01SE37FJ68-BBuy7w4bMBDwwr1F&_nc_ohc=Xj_QagrrLLIQ7kNvwGMf4wW&_nc_oc=AdnQxPeIIS0AK9a84FvV_-fLj9AEamLNMYkaO8JVJ-NGX75cDH8UqG5zy_DEBdNPFno&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=RRtx4rae8DN-zwk86p5VVg&oh=00_AfVQWjEjTL7ew3W-KiiUQLR4IehHAr5Yx_v-3FDwmpnRKg&oe=68B79510" alt="Bride's intricate jewelry and mehendi details" loading="lazy">
             <div class="gallery-overlay">
               <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
             </div>
           </div>
           
-          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.82787-15/522648261_18378489418192874_7960173927349057094_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGBfJkAlh7N7h82oDPuYJp4c_Exc-iyQm1z8TFz6LJCbVtpiHU-csMsMYBBvYxMUSQN-WzJB6iRPQU1Hje3UDu1&_nc_ohc=CmlJD21DEEYQ7kNvwG3uhta&_nc_oc=AdnxPLoTUOmbO_9bwn2gFny3I0AsHE9ozUCo15Hhi3mBm-F_W-UpHB7Mev6Fd6K1uTerIXDSsZ6zOWd8z_E1Kamq&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=V7Tp4KMpft1pVv4Z53qmSQ&oh=00_AfRI3ISu88ZW-6VB9ZvqY7MgejTkJPLQiDTzGbWnzZDd1Q&oe=688991C3">
-            <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.6435-9/107959501_880200539054838_7448110445846481246_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEntawfxqqYs47PKyJk3kcCJS5gHpZQa7AlLmAellBrsODU0XpIzQBX1k35OsCTybwEyN8scM91RUTHos_VZ8V_&_nc_ohc=ZxzjFh-XFm0Q7kNvwGuBdTV&_nc_oc=AdkmG00KQC_IwLTjNrj6ynoTganw72gEq7POmEmhjGyi9aPIXwV8m_uMHMUe-lErNUs&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=KGOjYQ1w3eVAo4eH8LAX-w&oh=00_AfTYZ4vEsEvgr-5wend4v7CmGfbHjb8_7PxuuLqO34OcAQ&oe=68ADA6C6" alt="Groom in traditional Nepali sherwani">
+          <div class="gallery-item rounded-xl overflow-hidden fade-in" data-src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/484228082_1154012720068892_5856579146224743078_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEQvbGaVHguXXlV8q_6x8A7dRqI_v86zf51Goj-_zrN_hIDxp8aqTlkDDFxAdluyzmyRsywP1G1OlQ7auM2DD1j&_nc_ohc=C2fOTq5VtXIQ7kNvwF5RdXb&_nc_oc=AdkxKVv-M9yjPzqNG6tzjXeGkj2ytgG9FMl5UwX8DkODSkknWYQM6ojj8mQIxNOsKKw&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=dtNkTqvTmSdAmN9shWS2uw&oh=00_AfXVgjSWfa32CjodVjQ1crj8KSb2hWhr0YF_Ll5FmIa8Cg&oe=68B77D10">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/484228082_1154012720068892_5856579146224743078_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEQvbGaVHguXXlV8q_6x8A7dRqI_v86zf51Goj-_zrN_hIDxp8aqTlkDDFxAdluyzmyRsywP1G1OlQ7auM2DD1j&_nc_ohc=C2fOTq5VtXIQ7kNvwF5RdXb&_nc_oc=AdkxKVv-M9yjPzqNG6tzjXeGkj2ytgG9FMl5UwX8DkODSkknWYQM6ojj8mQIxNOsKKw&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=dtNkTqvTmSdAmN9shWS2uw&oh=00_AfXVgjSWfa32CjodVjQ1crj8KSb2hWhr0YF_Ll5FmIa8Cg&oe=68B77D10" alt="Groom in traditional Nepali sherwani" loading="lazy">
             <div class="gallery-overlay">
               <span class="text-white text-xl"><i class="fas fa-search-plus"></i></span>
             </div>
@@ -787,16 +1212,16 @@
           <div class="md:w-1/2 fade-in">
             <div class="grid grid-cols-2 gap-4">
               <div class="rounded-xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Maya Boutique Craftsmanship - Artisans at work" class="w-full h-64 object-cover">
+                <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/487780636_18365424100192874_6509677050196830446_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG3Kz87XzHUPQBYdkEdlwQwI1vI3AG6A9QjW8jcAboD1EWZJh_gAgrpNMrWbmjbdrkAgK_wfMoS0e3_e2uAMlXh&_nc_ohc=ly4DxWvrrr4Q7kNvwEIzXLy&_nc_oc=AdmASs9hgBWPP4Upsl96pUqiUeyIF2JlrSTx2w9BUqLnUXQWgdeziI9_E9QdJ9FMao4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=csLIcaBa9gbEVYCYfssOFQ&oh=00_AfW3WKngzd-iRZuyb1ZQKh_mkOxgMJS4KOJ_Lg9wtRwuLg&oe=68B77DF7" alt="Maya Boutique Craftsmanship - Artisans at work" class="w-full h-64 object-cover" loading="lazy">
               </div>
               <div class="rounded-xl overflow-hidden shadow-lg mt-12 transform transition hover:scale-105">
-                <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/518283794_25046981428224981_2258178114045744617_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHz4t4zpyzdEcwPLuG9SLVYSWpQNEJ7XbFJalA0QntdsUuTNnuQE8bjO68DVSWtU0gM_ORz93R5wZrvootsVd1Y&_nc_ohc=HWAi3CD7EIAQ7kNvwG8QDD4&_nc_oc=Adkoxmfrnob4xTZS6gtf3YrldtvJh-HInPe0P_5NDZZ3aNF-QBeRIm98J6hmVish8lw&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=sISm2ODJa7kyqoRL-4X7VQ&oh=00_AfRXz7nJ-1C12wMZAH4d4MThruLW-K_AGW4nHiFkNtqnMg&oe=688C23EE" class="w-full h-64 object-cover">
+                <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/518283794_25046981428224981_2258178114045744617_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHz4t4zpyzdEcwPLuG9SLVYSWpQNEJ7XbFJalA0QntdsUuTNnuQE8bjO68DVSWtU0gM_ORz93R5wZrvootsVd1Y&_nc_ohc=pX9JPZmBa9gQ7kNvwHUcJ-0&_nc_oc=AdmMw4iJS8NaiG7bazgWdSqhmO0CGZUc05amwUu8D2TIyjyR9y81aI_Rb2C1VCVZBVE&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=aRAPs3JihbwPHLkYoWbFSA&oh=00_AfVc2zAArQ-_beiKuw_1wwAuW-hPkXO-h0Akf3mEz7NaQQ&oe=68B7A56E" alt="Maya Boutique Design Process" class="w-full h-64 object-cover" loading="lazy">
               </div>
             </div>
           </div>
           
           <div class="md:w-1/2 fade-in">
-            <h2 class="section-title text-4xl mb-6">Our Journey</h2>
+            <h2 class="section-title text-3xl md:text-4xl mb-6">Our Journey</h2>
             <p class="mb-4">
               Started in Biratnagar with a vision close to my heart, Maya Boutique grew from a small studio into a space where tradition meets artistry. With an artist's eye and a deep love for tradition, I've always wanted to create pieces that reflect our heritage through delicate handwork, rich textures, and the timeless charm of traditional Nepali fabrics.
             </p>
@@ -804,7 +1229,7 @@
               Each design reflects a story of culture, emotion, and elegance. I've poured my passion into every piece, believing that every stitch carries meaning and every embroidery preserves the beauty of our roots. Our creations have adorned local brides and graced fashion showcases, each one shaped by devotion, creativity, and cultural pride. Today, Maya Boutique stands not just as a brand, but as a deeply personal journey stitched with love, where culture and couture beautifully intertwine.
             </p>
             <div class="flex items-center space-x-4 bg-maroon-dark p-4 rounded-xl shadow-sm">
-              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.6435-9/38433257_1925123570879707_6879474655325847552_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=94e2a3&_nc_eui2=AeF85RUdOXD3Q2nzeQFUfjL-p2z4VoO_x5inbPhWg7_HmAF3Bn75FDGWXEmkZGWpVxhp_FHLGDJLhYJpmcLxNMv8&_nc_ohc=PDo1VOtsV3QQ7kNvwFUI9L6&_nc_oc=AdkdRfeY_QIIqeXlwxhqwGVb37u3sGuk6pHp40K9NECFM5MR4iMAs7P3u_22yK2o4gQv9mJ5FJUZkhmtxrpvZm3_&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=MyjCsnlF4yrCbmNb12VZ1g&oh=00_AfRJh-9c-5u9glqMDXhmy0cu4HbEy1TLRi4U3XdWEmLPFQ&oe=68ABBBBE" alt="Knor Shrestha - Founder of Maya Boutique" class="w-16 h-16 rounded-full object-cover shadow-md border-2 border-primary">
+              <img src="https://scontent.fktm1-1.fna.fbcdn.net/v/t1.6435-9/38433257_1925123570879707_6879474655325847552_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=94e2a3&_nc_eui2=AeF85RUdOXD3Q2nzeQFUfjL-p2z4VoO_x5inbPhWg7_HmAF3Bn75FDGWXEmkZGWpVxhp_FHLGDJLhYJpmcLxNMv8&_nc_ohc=IYSjU4tprhMQ7kNvwErAjQP&_nc_oc=Adnr2IK0D701kRUMghGGuzNp4IoKnpKWoIxM0O919I4oGvHJYmO_SppUfWipGyvTAy4&_nc_zt=23&_nc_ht=scontent.fktm1-1.fna&_nc_gid=96E4n3E7VrVjuk_8GtakXQ&oh=00_AfVcPaCuv1afVBoudwE4iz7xJL2Ng1dfjxBpKakhSN3fcw&oe=68D9377E" alt="Knor Shrestha - Founder of Maya Boutique" class="w-16 h-16 rounded-full object-cover shadow-md border-2 border-primary" loading="lazy">
               <div>
                 <h4 class="font-bold text-primary">Knor Shrestha</h4>
                 <p class="text-sm text-gray-500">Founder & Creative Designer</p>
@@ -820,7 +1245,7 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center gap-12">
           <div class="md:w-1/2 fade-in">
-            <h2 class="section-title text-4xl mb-6">Our Atelier</h2>
+            <h2 class="section-title text-3xl md:text-4xl mb-6">Our Atelier</h2>
             <p class="mb-4">
               Visit our boutique in the heart of Biratnagar, where our designers will guide you through creating your perfect outfit. We specialize in custom bridal wear for Nepali weddings, with attention to every detail from initial sketch to final fitting.
             </p>
@@ -839,7 +1264,7 @@
                 <p>We recommend scheduling appointments for bridal consultations to ensure personalized attention.</p>
               </div>
               
-              <a href="#contact" class="btn-primary inline-block py-3 px-8 rounded-full uppercase font-semibold tracking-wider transform hover:scale-105">Book Appointment</a>
+              <a href="#contact" class="btn-primary inline-block py-3 px-8 rounded-full uppercase font-semibold tracking-wider transform hover:scale-105 w-full text-center">Book Appointment</a>
             </div>
           </div>
           
@@ -872,8 +1297,8 @@
     <section class="py-16" id="contact">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
-          <h2 class="section-title text-4xl">Begin Your Journey</h2>
-          <p class="max-w-2xl mx-auto mt-4">Reach out to schedule a consultation or inquire about our services</p>
+          <h2 class="section-title text-3xl md:text-4xl">Begin Your Journey</h2>
+          <p class="max-w-2xl mx-auto mt-4 text-base md:text-lg">Reach out to schedule a consultation or inquire about our services</p>
           <div class="luxury-divider"></div>
         </div>
         
@@ -979,7 +1404,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
         <div>
           <div class="text-2xl font-bold mb-4 flex items-center">
-            <img src="logo.png" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+            <img src="images/logo/logo.png" alt="Maya Boutique Logo" class="w-12 h-12 rounded-full border-2 border-white shadow-md" loading="lazy">
            
             <span class="tracking-wider text-primary">MAYA BOUTIQUE</span>
           </div>
@@ -1208,15 +1633,233 @@
         }
       }
     });
-  </script>
 
+    // Product Showcase Carousel
+    function initShowcase(containerId, prevBtnId, nextBtnId) {
+      const container = document.getElementById(containerId);
+      const prevBtn = document.getElementById(prevBtnId);
+      const nextBtn = document.getElementById(nextBtnId);
+      const items = container.querySelectorAll('.showcase-item');
+      const itemWidth = items[0].offsetWidth + 30; // width + margin
+      let position = 0;
+      const maxPosition = -((items.length - 4) * itemWidth);
+      
+      function updatePosition() {
+        container.style.transform = `translateX(${position}px)`;
+        
+        // Show/hide navigation buttons based on position
+        prevBtn.style.display = position >= 0 ? 'none' : 'flex';
+        nextBtn.style.display = position <= maxPosition ? 'none' : 'flex';
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        position = Math.min(position + itemWidth * 2, 0);
+        updatePosition();
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        position = Math.max(position - itemWidth * 2, maxPosition);
+        updatePosition();
+      });
+      
+      // Initialize button visibility
+      updatePosition();
+    }
+    
+    // Initialize both showcases
+    initShowcase('newArrivalsContainer', 'newArrivalsPrev', 'newArrivalsNext');
+    initShowcase('trendingContainer', 'trendingPrev', 'trendingNext');
+
+  // Product Modal functionality
+const productModal = document.getElementById("productModal");
+const productModalClose = document.querySelector(".product-modal-close");
+const viewDetailsButtons = document.querySelectorAll(".view-details-btn");
+const modalProductImage = document.getElementById("modalProductImage");
+const modalProductTitle = document.getElementById("modalProductTitle");
+const modalProductDescription = document.getElementById("modalProductDescription");
+const modalProductDetails = document.getElementById("modalProductDetails");
+const whatsappLink = document.getElementById("whatsappLink");
+
+// Product data
+const products = {
+  1: {
+    title: "Bridal Elegance",
+    description: "Hand-embroidered lehenga with intricate detailing, crafted with premium fabrics and traditional Nepali craftsmanship.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/466539552_18347563126192874_8386536565634866300_n.jpg",
+    details: [
+      "Hand-embroidered with gold thread",
+      "Premium silk fabric",
+      "Custom sizing available",
+      "Includes matching dupatta",
+      "4-6 weeks delivery time"
+    ]
+  },
+  2: {
+    title: "Silk Elegance",
+    description: "Premium Banarasi silk saree with golden zari work, perfect for wedding ceremonies and special occasions.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/463996959_18344528650192874_3790331217054383728_n.jpg",
+    details: [
+      "Authentic Banarasi silk",
+      "Intricate zari work",
+      "Matching blouse piece included",
+      "Traditional Nepali motifs",
+      "Ready to wear"
+    ]
+  },
+  3: {
+    title: "Royal Sherwani",
+    description: "Embroidered sherwani with traditional motifs, perfect for grooms and wedding guests.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/467749116_18348811543192874_7122094642888641699_n.jpg",
+    details: [
+      "Hand-embroidered detailing",
+      "Premium fabric with silk accents",
+      "Custom tailoring available",
+      "Matching accessories available",
+      "3-4 weeks delivery time"
+    ]
+  },
+  4: {
+    title: "Designer Lehenga",
+    description: "Contemporary design with traditional craftsmanship, blending modern aesthetics with cultural heritage.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/464062852_18344529499192874_7317885342891995528_n.jpg",
+    details: [
+      "Contemporary design",
+      "Traditional embroidery techniques",
+      "Custom color options",
+      "Lightweight and comfortable",
+      "5-6 weeks delivery time"
+    ]
+  },
+  5: {
+    title: "Little Royals",
+    description: "Traditional outfits for children, perfect for weddings and cultural ceremonies.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/466696910_18347655427192874_5634864047795221911_n.jpg",
+    details: [
+      "Child-friendly fabrics",
+      "Traditional designs in smaller sizes",
+      "Comfortable for all-day wear",
+      "Custom sizing available",
+      "2-3 weeks delivery time"
+    ]
+  },
+  6: {
+    title: "Royal Red Lehenga",
+    description: "A favorite among our brides this season, featuring intricate handwork and premium fabrics.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469856462_18351235048192874_6843777127656305268_n.jpg",
+    details: [
+      "Vibrant red color",
+      "Extensive hand embroidery",
+      "Heavy fabric with rich fall",
+      "Matching jewelry available",
+      "6-8 weeks delivery time"
+    ]
+  },
+  7: {
+    title: "Matching Ensemble",
+    description: "Coordinated outfits for the perfect couple, designed to complement each other.",
+    image: "https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/469643621_18351234931192874_209187295766405270_n.jpg",
+    details: [
+      "Coordinated designs",
+      "Matching color palette",
+      "Complementary embroidery patterns",
+      "Custom fitting for both",
+      "8-10 weeks delivery time"
+    ]
+  },
+  8: {
+    title: "Bridal Jewelry",
+    description: "Traditional Nepali bridal jewelry sets crafted to complement our outfits.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t39.30808-6/469648925_18351234847192874_4774870560779065293_n.jpg",
+    details: [
+      "Traditional designs",
+      "Gold-plated with precious stones",
+      "Customizable elements",
+      "Matching set available",
+      "2-3 weeks delivery time"
+    ]
+  },
+  9: {
+    title: "Designer Sherwani",
+    description: "Contemporary take on traditional men's wear, blending modern cuts with classic elements.",
+    image: "https://scontent.fktm19-1.fna.fbcdn.net/v/t51.75761-15/469549264_18351146023192874_4851911270889720335_n.jpg",
+    details: [
+      "Contemporary design",
+      "Premium fabric with embroidery",
+      "Modern cut with traditional elements",
+      "Custom sizing available",
+      "4-5 weeks delivery time"
+    ]
+  },
+  10: {
+    title: "Classic Daura Suruwal",
+    description: "Traditional Nepali attire with modern fit, perfect for cultural events and ceremonies.",
+    image: "https://scontent.fktm1-1.fna.fbcdn.net/v/t51.75761-15/470899729_18352828684192874_1925957311425504803_n.jpg",
+    details: [
+      "Authentic traditional design",
+      "Modern comfortable fit",
+      "Premium cotton fabric",
+      "Custom embroidery available",
+      "3-4 weeks delivery time"
+    ]
+  }
+};
+
+// Add event listeners to view details buttons
+viewDetailsButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const productId = this.closest('.showcase-item').getAttribute('data-id');
+    const product = products[productId];
+    
+    if (product) {
+      modalProductImage.src = product.image;
+      modalProductTitle.textContent = product.title;
+      modalProductDescription.textContent = product.description;
+      
+      // Clear previous details
+      modalProductDetails.innerHTML = '';
+      
+      // Add new details
+      product.details.forEach(detail => {
+        const li = document.createElement('li');
+        li.textContent = detail;
+        modalProductDetails.appendChild(li);
+      });
+      
+      // Update WhatsApp link
+      const message = `Hello Maya Boutique, I'm interested in the ${product.title}. Can you provide more information?`;
+      whatsappLink.href = `https://wa.me/9779804377178?text=${encodeURIComponent(message)}`;
+      
+      // Show modal
+      productModal.style.display = 'block';
+    }
+  });
+});
+
+// Close product modal
+productModalClose.addEventListener('click', function() {
+  productModal.style.display = 'none';
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+  if (event.target == productModal) {
+    productModal.style.display = 'none';
+  }
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape" && productModal.style.display === 'block') {
+    productModal.style.display = 'none';
+  }
+});
+
+// Fix for the hero section images (some URLs were broken)
+// Replace with these working URLs if needed:
+// Hero Slide 1: https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1000&q=80
+// Hero Slide 2: https://images.unsplash.com/photo-1519657337289-0776534f1cd0?w=1000&q=80
+// Hero Slide 3: https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&q=80
+
+</script>
 </body>
-
 </html>
-
-
-
-
-
-
-
