@@ -18,9 +18,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-	 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
+ <style>
+/* Chat widget container */
+.n8n-chat {
+    background-color: #f5f5f5 !important; /* light grey background */
+    color: #000 !important; /* black text */
+}
+
+/* Messages inside chat */
+.n8n-chat-message {
+    color: #000 !important; /* black text */
+}
+
+/* Input box */
+.n8n-chat-input textarea {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+</style>
+
+	<style>
     :root {
       --primary: #C8AD7F; /* Gold */
       --primary-dark: #A68A5D;
@@ -1113,7 +1131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </header>
 
- 
+ <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
@@ -2192,6 +2210,7 @@ if (metaRobots) {
 </script>
 </body>
 </html>
+
 
 
 
