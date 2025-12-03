@@ -2176,9 +2176,212 @@ if (metaRobots) {
         status.innerHTML = '❌ Failed to submit. Please try again.';
       });
   });
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  /* Luxury Theme Override for n8n Chat */
+  :root {
+    --maya-primary: #C8AD7F;
+    --maya-primary-dark: #A68A5D;
+    --maya-secondary: #7D4B4B;
+    --maya-dark: #5a3636;
+    --maya-darker: #422828;
+    --maya-light: #FAF9F6;
+    --maya-accent: #F0EDE5;
+  }
+
+  /* Complete override of n8n chat widget */
+  .n8n-chat-widget {
+    background: var(--maya-secondary) !important;
+    border: 2px solid var(--maya-primary) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    color: var(--maya-light) !important;
+  }
+
+  .n8n-chat-header {
+    background: linear-gradient(135deg, var(--maya-darker) 0%, var(--maya-dark) 100%) !important;
+    border-bottom: 2px solid var(--maya-primary) !important;
+    border-radius: 14px 14px 0 0 !important;
+    padding: 16px !important;
+  }
+
+  .n8n-chat-header-title {
+    color: var(--maya-primary) !important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+
+  .n8n-chat-header-subtitle {
+    color: var(--maya-accent) !important;
+    font-size: 12px !important;
+    opacity: 0.8 !important;
+  }
+
+  .n8n-chat-messages {
+    background: var(--maya-secondary) !important;
+    padding: 16px !important;
+  }
+
+  .n8n-chat-message-bubble {
+    border-radius: 18px !important;
+    padding: 12px 16px !important;
+    margin: 8px 0 !important;
+    max-width: 85% !important;
+    line-height: 1.5 !important;
+  }
+
+  .n8n-chat-message-bubble.bot {
+    background: var(--maya-dark) !important;
+    color: var(--maya-light) !important;
+    border: 1px solid rgba(200, 173, 127, 0.2) !important;
+    border-top-left-radius: 4px !important;
+  }
+
+  .n8n-chat-message-bubble.user {
+    background: linear-gradient(135deg, var(--maya-primary) 0%, var(--maya-primary-dark) 100%) !important;
+    color: var(--maya-secondary) !important;
+    border-top-right-radius: 4px !important;
+    margin-left: auto !important;
+  }
+
+  .n8n-chat-message-text {
+    color: inherit !important;
+    font-size: 14px !important;
+  }
+
+  .n8n-chat-input {
+    background: var(--maya-dark) !important;
+    border-top: 2px solid var(--maya-primary) !important;
+    padding: 16px !important;
+  }
+
+  .n8n-chat-input-textarea {
+    background: var(--maya-darker) !important;
+    color: var(--maya-light) !important;
+    border: 1px solid var(--maya-primary) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    min-height: 50px !important;
+  }
+
+  .n8n-chat-input-textarea:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(200, 173, 127, 0.3) !important;
+  }
+
+  .n8n-chat-send-button {
+    background: var(--maya-primary) !important;
+    color: var(--maya-secondary) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    transition: all 0.3s ease !important;
+    margin-left: 8px !important;
+  }
+
+  .n8n-chat-send-button:hover {
+    background: var(--maya-primary-dark) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .n8n-chat-toggle-button {
+    background: var(--maya-primary) !important;
+    color: var(--maya-secondary) !important;
+    border-radius: 50% !important;
+    width: 64px !important;
+    height: 64px !important;
+    box-shadow: 0 8px 25px rgba(200, 173, 127, 0.4) !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid var(--maya-primary-dark) !important;
+  }
+
+  .n8n-chat-toggle-button:hover {
+    background: var(--maya-primary-dark) !important;
+    transform: scale(1.1) rotate(5deg) !important;
+    box-shadow: 0 12px 30px rgba(200, 173, 127, 0.5) !important;
+  }
+
+  .n8n-chat-toggle-button-icon {
+    font-size: 24px !important;
+  }
+
+  /* Ensure all text is visible */
+  .n8n-chat * {
+    color: var(--maya-light) !important;
+  }
+
+  .n8n-chat-message-bubble.user * {
+    color: var(--maya-secondary) !important;
+  }
+
+  /* Typing indicator */
+  .n8n-chat-typing-indicator span {
+    background-color: var(--maya-primary) !important;
+  }
+
+  /* Scrollbar */
+  .n8n-chat-messages::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  .n8n-chat-messages::-webkit-scrollbar-track {
+    background: rgba(200, 173, 127, 0.1) !important;
+    border-radius: 4px !important;
+  }
+
+  .n8n-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(200, 173, 127, 0.3) !important;
+    border-radius: 4px !important;
+  }
+</style>
+
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+  
+  createChat({
+    webhookUrl: 'https://deepakkumarshah.com.np/webhook/18321606-f064-4c54-a7c7-1d55626ae6f8/chat',
+    theme: 'dark',
+    welcomeMessage: 'Welcome to Maya Boutique! Your personal concierge for luxury bridal and ethnic wear. How may I assist you today?',
+    placeholder: 'Ask about collections, appointments, or pricing...',
+    defaultLanguage: 'en',
+    mode: 'full',
+    baseUrl: '',
+    initialMessages: [],
+    // Using your exact color scheme
+    customStyles: {
+      '--chat-primary-color': '#C8AD7F',
+      '--chat-primary-color-hover': '#A68A5D',
+      '--chat-background-color': '#7D4B4B',
+      '--chat-background-color-secondary': '#5a3636',
+      '--chat-text-color': '#FAF9F6',
+      '--chat-text-color-secondary': '#F0EDE5',
+      '--chat-border-color': '#C8AD7F',
+      '--chat-border-radius': '16px',
+      '--chat-font-family': '\'Montserrat\', sans-serif',
+      '--chat-header-background-color': '#5a3636',
+      '--chat-header-text-color': '#C8AD7F',
+      '--chat-message-background-color': '#422828',
+      '--chat-message-text-color': '#FAF9F6',
+      '--chat-user-message-background-color': '#C8AD7F',
+      '--chat-user-message-text-color': '#7D4B4B',
+      '--chat-input-background-color': '#5a3636',
+      '--chat-input-text-color': '#FAF9F6',
+      '--chat-input-border-color': '#C8AD7F',
+      '--chat-button-background-color': '#C8AD7F',
+      '--chat-button-text-color': '#7D4B4B',
+      '--chat-button-hover-background-color': '#A68A5D',
+      '--chat-button-hover-text-color': '#7D4B4B',
+    }
+  });
+</script>
 </script>
 </body>
 </html>
+
 
 
 
